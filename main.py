@@ -35,6 +35,14 @@ AREA2 = float
 
 # Global variable declarations
 LAUNCH = False
+CMV = VECTOR
+
+
+def CMV_0(POINTS):
+    NUMPOINTS = len(POINTS)
+    for i in range(NUMPOINTS-1):
+        if math.sqrt((POINTS[i][0]**2 - POINTS[i+1][0]**2) +  (POINTS[i+1][1]**2 - POINTS[i+1][1] ** 2)) > LENGTH1:
+            return True
 
 def DECIDE():
     pass
