@@ -44,5 +44,57 @@ def CMV_0(POINTS):
         if math.sqrt((POINTS[i][0]**2 - POINTS[i+1][0]**2) +  (POINTS[i+1][1]**2 - POINTS[i+1][1] ** 2)) > LENGTH1:
             return True
 
+def CMV_4(POINTS):
+    NUMPOINTS = len(POINTS)
+    quadrant = [(0,0),(-1,0),(0,-1),(1,0)]
+    last_quad = None
+    
+    for i in range(NUMPOINTS-1):
+        if POINTS[i][0] >= 0:
+            if POINTS[i][1] >= 0:
+                if last_quad != quadrant[0]:
+                    if i != 0:
+                        return True
+                else: 
+                    last_quad = quadrant[0]
+            else:
+                if last_quad != quadrant[3]:
+                    if i != 0:
+                        return True
+                    else:
+                        last_quad = quadrant[3]
+                else: 
+                    last_quad = quadrant[3]
+                
+        if POINTS[i][0] < 0:
+            if POINTS[i][1] >= 0:
+                if last_quad != quadrant[1]:
+                    if i != 0:
+                        return True
+                    else: 
+                        last_quad = quadrant[1]
+                else: 
+                    last_quad = quadrant[1]
+            else: 
+                if last_quad != quadrant[2]:
+                    if i != 0:
+                        return True
+                    else: 
+                        last_quad = quadrant[2]
+                else:
+                    last_quad = quadrant[2]
+
+def CMV_5(POINTS):
+    NUMPOINTS = len(POINTS)
+    for i in range(NUMPOINTS-2):
+        for j in range(1, NUMPOINTS-1):
+            if (POINTS[j] - POINTS[i]) < 0:
+                return True
+
+
+
+            
+        
+            
 def DECIDE():
     pass
