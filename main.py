@@ -52,6 +52,7 @@ def CMV_5(POINTS):
                 return True
 
 
+
 def CMV_4(POINTS):
     NUMPOINTS = len(POINTS)
     quadrant = [(0,0),(-1,0),(0,-1),(1,0)]
@@ -95,5 +96,7 @@ def CMV_4(POINTS):
             
         
             
+
+
 def DECIDE():
     pass
