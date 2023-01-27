@@ -39,14 +39,17 @@ CMV = VECTOR
 
 
 def CMV_0(POINTS):
+    if not (0 <= LENGTH1):
+        return False
     NUMPOINTS = len(POINTS)
     for i in range(NUMPOINTS-1):
         if math.sqrt((POINTS[i][0]**2 - POINTS[i+1][0]**2) +  (POINTS[i+1][1]**2 - POINTS[i+1][1] ** 2)) > LENGTH1:
             return True
+    return False
 
 def CMV_2(POINTS, EPSILON, PI):
     if not (0 <= EPSILON < PI):
-        raise ValueError("EPSILON must be between 0 and PI")
+        return False
     for i in range(len(POINTS) - 2):
         point_1_x = POINTS[i][0]
         point_1_y = POINTS[i][1]
@@ -62,13 +65,13 @@ def CMV_2(POINTS, EPSILON, PI):
                 return True
     return False
 
-
 def CMV_5(POINTS):
     NUMPOINTS = len(POINTS)
     for i in range(NUMPOINTS-2):
         for j in range(1, NUMPOINTS-1):
             if (POINTS[j] - POINTS[i]) < 0:
                 return True
+    return False
 
 def CMV_6(POINTS, N_PTS, DIST):
     NUMPOINTS = len(POINTS)
@@ -92,12 +95,11 @@ def CMV_6(POINTS, N_PTS, DIST):
                     
                     if (comparison_distance > DIST):
                         return True
-                    
     return False
 
-
-def CMV_4(POINTS):
-    NUMPOINTS = len(POINTS)
+def CMV_4(POINTS, NUMPOINTS, Q_PTS, QUADS):
+    if not (2 <= Q_PTS <= NUMPOINTS) or not (1 <= QUADS <= 3):
+        return False
     quadrant = [(0,0),(-1,0),(0,-1),(1,0)]
     last_quad = None
 
@@ -135,6 +137,8 @@ def CMV_4(POINTS):
                         last_quad = quadrant[2]
                 else:
                     last_quad = quadrant[2]
+    return False
+
 
 def CMV_9(POINTS, C_PTS, D_PTS, NUMPOINTS, PI, EPSILON):
     if (not (1 <= C_PTS)) or (not (1 <= D_PTS)) or (not (C_PTS+D_PTS <= NUMPOINTS - 3)) or NUMPOINTS < 5:
