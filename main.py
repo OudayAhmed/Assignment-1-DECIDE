@@ -65,6 +65,38 @@ def CMV_2(POINTS, EPSILON, PI):
                 return True
     return False
 
+def CMV_5(POINTS):
+    NUMPOINTS = len(POINTS)
+    for i in range(NUMPOINTS-2):
+        for j in range(1, NUMPOINTS-1):
+            if (POINTS[j] - POINTS[i]) < 0:
+                return True
+    return False
+
+def CMV_6(POINTS, N_PTS, DIST):
+    NUMPOINTS = len(POINTS)
+    if NUMPOINTS < 3:
+        return False
+    elif N_PTS > NUMPOINTS or N_PTS > 3:
+        return False
+    else:
+        for i in range(NUMPOINTS - N_PTS):
+            if POINTS[i + N_PTS - 1][0] == POINTS[i][0] and POINTS[i - N_PTS - 1][1] == POINTS[i][1]:
+                for j in range(N_PTS - 1):
+                    if math.sqrt(POINTS[i][0] * POINTS[i + j][0] + POINTS[i][1] * POINTS[i + j]) > DIST:
+                        return True
+            else:
+                for j in range(N_PTS - 1):
+                    side_1 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i][0]) ** 2 + (POINTS[i + N_PTS - 1][1] - POINTS[i][1]) ** 2)
+                    side_2 = math.sqrt((POINTS[i + j][0] - POINTS[i][0]) ** 2 + (POINTS[i + j][1] - POINTS[i][1]) ** 2)
+                    side_3 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i + j][0]) ** 2 + (POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
+                    cos_angle = math.acos((side_1 ** 2 + side_2 ** 2 - side_3 ** 2) / (2 * side_1 * side_2))
+                    comparison_distance = math.sin(cos_angle) * side_2
+                    
+                    if (comparison_distance > DIST):
+                        return True
+    return False
+
 def CMV_4(POINTS, NUMPOINTS, Q_PTS, QUADS):
     if not (2 <= Q_PTS <= NUMPOINTS) or not (1 <= QUADS <= 3):
         return False
@@ -107,13 +139,6 @@ def CMV_4(POINTS, NUMPOINTS, Q_PTS, QUADS):
                     last_quad = quadrant[2]
     return False
 
-def CMV_5(POINTS):
-    NUMPOINTS = len(POINTS)
-    for i in range(NUMPOINTS-2):
-        for j in range(1, NUMPOINTS-1):
-            if (POINTS[j] - POINTS[i]) < 0:
-                return True
-    return False
 
 def CMV_9(POINTS, C_PTS, D_PTS, NUMPOINTS, PI, EPSILON):
     if (not (1 <= C_PTS)) or (not (1 <= D_PTS)) or (not (C_PTS+D_PTS <= NUMPOINTS - 3)) or NUMPOINTS < 5:
