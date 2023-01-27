@@ -94,7 +94,7 @@ def CMV_6(POINTS, N_PTS, DIST):
                         (POINTS[i + N_PTS - 1][0] - POINTS[i][0]) ** 2 + (POINTS[i + N_PTS - 1][1] - POINTS[i][1]) ** 2)
                     side_2 = math.sqrt((POINTS[i + j][0] - POINTS[i][0]) ** 2 + (POINTS[i + j][1] - POINTS[i][1]) ** 2)
                     side_3 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i + j][0]) ** 2 + (
-                                POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
+                            POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
                     cos_angle = math.acos((side_1 ** 2 + side_2 ** 2 - side_3 ** 2) / (2 * side_1 * side_2))
                     comparison_distance = math.sin(cos_angle) * side_2
 
@@ -168,12 +168,11 @@ def CMV_9(POINTS, C_PTS, D_PTS, NUMPOINTS, PI, EPSILON):
 
 
 def CMV_1(POINTS, NUMPOINTS):
-    if not(0 <= RADIUS1):
-         return False
+    if not (0 <= RADIUS1):
+        return False
     for i in range(NUMPOINTS - 3):
         dis_1_2 = math.sqrt((POINTS[i][0] ** 2 - POINTS[i + 1][0] ** 2) + (POINTS[i][1] ** 2 - POINTS[i + 1][1] ** 2))
-        dis_2_3 = math.sqrt(
-            (POINTS[i + 1][0] ** 2 - POINTS[i + 2][0] ** 2) + (POINTS[i + 1][1] ** 2 - POINTS[i + 2][1] ** 2))
+        dis_2_3 = math.sqrt((POINTS[i + 1][0] ** 2 - POINTS[i + 2][0] ** 2) + (POINTS[i + 1][1] ** 2 - POINTS[i + 2][1] ** 2))
         dis_3_1 = math.sqrt((POINTS[i + 2][0] ** 2 - POINTS[i][0] ** 2) + (POINTS[i + 2][1] ** 2 - POINTS[i][1] ** 2))
         max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
         if max_radius > RADIUS1:
@@ -181,10 +180,30 @@ def CMV_1(POINTS, NUMPOINTS):
     return False
 
 
-def CMV_13(POINTS, NUMPOINTS, A_PTS, B_BTS):
-    if NUMPOINTS < 5:
+def CMV_13(POINTS, NUMPOINTS, A_PTS, B_PTS):
+    if NUMPOINTS < 5 or not(0 <= RADIUS2):
         return False
-
+    i = 0
+    true_cnt = 0
+    while i + A_PTS + B_PTS + 2 < NUMPOINTS:
+        point_1_x = POINTS[i][0]
+        point_1_y = POINTS[i][1]
+        point_2_x = POINTS[i + A_PTS + 1][0]
+        point_2_y = POINTS[i + A_PTS + 1][1]
+        point_3_x = POINTS[i + A_PTS + B_PTS + 2][0]
+        point_3_y = POINTS[i + A_PTS + B_PTS + 2][1]
+        dis_1_2 = math.sqrt((point_1_x ** 2 - point_2_x ** 2) + (point_1_y ** 2 - point_2_y ** 2))
+        dis_2_3 = math.sqrt((point_2_x ** 2 - point_3_x ** 2) + (point_2_y ** 2 - point_3_y ** 2))
+        dis_3_1 = math.sqrt((point_3_x ** 2 - point_1_x ** 2) + (point_3_y ** 2 - point_1_y ** 2))
+        max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
+        if max_radius > RADIUS1:
+            true_cnt += 1
+        if max_radius <= RADIUS2:
+            true_cnt += 1
+        if true_cnt >= 2:
+            return True
+        i = i + 1
+    return False
 
 def DECIDE():
     pass
