@@ -65,9 +65,9 @@ def CMV_2(POINTS, EPSILON, PI):
 
 def CMV_5(POINTS):
     NUMPOINTS = len(POINTS)
-    for i in range(NUMPOINTS-2):
+    for i in range(0, NUMPOINTS-2):
         for j in range(1, NUMPOINTS-1):
-            if (POINTS[j] - POINTS[i]) < 0:
+            if (POINTS[j][0] - POINTS[i][0]) < 0:
                 return True
 
 def CMV_4(POINTS):
