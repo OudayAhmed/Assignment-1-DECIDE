@@ -44,6 +44,7 @@ def CMV_0(POINTS):
         if math.sqrt((POINTS[i][0]**2 - POINTS[i+1][0]**2) +  (POINTS[i+1][1]**2 - POINTS[i+1][1] ** 2)) > LENGTH1:
             return True
 
+
 def CMV_2(POINTS, EPSILON, PI):
     if not (0 <= EPSILON < PI):
         raise ValueError("EPSILON must be between 0 and PI")
@@ -155,6 +156,15 @@ def CMV_9(POINTS, C_PTS, D_PTS, NUMPOINTS, PI, EPSILON):
                 return True
     return False
 
+def CMV_1(POINTS, NUMPOINTS):
+    for i in range(NUMPOINTS - 3):
+        dis_1_2 = math.sqrt((POINTS[i][0]**2 - POINTS[i+1][0]**2) + (POINTS[i][1]**2 - POINTS[i+1][1] ** 2))
+        dis_2_3 = math.sqrt((POINTS[i+1][0]**2 - POINTS[i+2][0]**2) + (POINTS[i+1][1]**2 - POINTS[i+2][1] ** 2))
+        dis_3_1 = math.sqrt((POINTS[i+2][0]**2 - POINTS[i][0]**2) + (POINTS[i++2][1]**2 - POINTS[i][1] ** 2))
+        max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
+        if max_radius > RADIUS1:
+            return True
+    return False
 
 def DECIDE():
     pass
