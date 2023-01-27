@@ -110,6 +110,25 @@ def CMV_4(POINTS):
                 else:
                     last_quad = quadrant[2]
 
+def CMV_9(POINTS, C_PTS, D_PTS, NUMPOINTS, PI, EPSILON):
+    if (not (1 <= C_PTS)) or (not (1 <= D_PTS)) or (not (C_PTS+D_PTS <= NUMPOINTS - 3)) or NUMPOINTS < 5:
+        return False
+    i = 0
+    while (i+C_PTS+D_PTS+2 < NUMPOINTS):
+        point_1_x = POINTS[i][0]
+        point_1_y = POINTS[i][1]
+        point_2_x = POINTS[i+C_PTS+1][0]
+        point_2_y = POINTS[i+C_PTS+1][1]
+        point_3_x = POINTS[i+C_PTS+D_PTS+2][0]
+        point_3_y = POINTS[i+C_PTS+D_PTS+2][1]
+        if not(point_1_x == point_2_x and point_1_y == point_2_y) or not(point_3_x == point_2_x and point_3_y == point_2_y):
+            u = [point_1_x - point_2_x, point_1_y - point_2_y]
+            v = [point_3_x - point_2_x, point_3_y - point_2_y]
+            angle = np.arccos(np.dot(u/np.linalg.norm(u), v/np.linalg.norm(v)))
+            if (angle < PI-EPSILON) or (angle > PI+EPSILON):
+                return True
+    return False
+
 
 def DECIDE():
     pass
