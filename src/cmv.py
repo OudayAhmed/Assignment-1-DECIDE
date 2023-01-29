@@ -135,10 +135,18 @@ class CMV:
 
     @staticmethod
     def cmv5(NUMPOINTS, POINTS):
-        # for i in range(NUMPOINTS - 2):
-        #     for j in range(1, NUMPOINTS - 1):
-        #         if (POINTS[j] - POINTS[i]) < 0:
-        #             return True
+        """Method for CMV5
+
+        Input is length of array containing datapoints and datapoints.
+        Check if there are at least one set of consecutive datapoints that fulfills the requirement
+        Xj - Xi < 0, where Xi = Xj -1.
+        If no such datapoints exist, return false.
+        """
+
+        for i in range(NUMPOINTS - 2):
+            for j in range(1, NUMPOINTS - 1):
+                if (POINTS[j][0] - POINTS[i][0]) < 0:
+                    return True
         return False
 
     @staticmethod

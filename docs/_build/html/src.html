@@ -45,8 +45,14 @@
 <li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">src package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src-cmv-module">src.cmv module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src-decide-module">src.decide module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.cmv">src.cmv module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.cmv.CMV"><code class="docutils literal notranslate"><span class="pre">CMV</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.decide">src.decide module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.decide.Decide"><code class="docutils literal notranslate"><span class="pre">Decide</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-src">Module contents</a></li>
 </ul>
 </li>
@@ -85,11 +91,88 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="src-cmv-module">
-<h2>src.cmv module<a class="headerlink" href="#src-cmv-module" title="Permalink to this heading"></a></h2>
+<section id="module-src.cmv">
+<span id="src-cmv-module"></span><h2>src.cmv module<a class="headerlink" href="#module-src.cmv" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.cmv.CMV">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.cmv.</span></span><span class="sig-name descname"><span class="pre">CMV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.calc_CMV">
+<span class="sig-name descname"><span class="pre">calc_CMV</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.calc_CMV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.calc_CMV" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv0">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LENGTH1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv1">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RADIUS1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv13">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv13</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RADIUS1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RADIUS2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv13"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv13" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv14">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv14</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AREA1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AREA2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F_PTS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv14" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv2">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EPSILON</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv3">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AREA1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv4">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QUADS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv5">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv5" title="Permalink to this definition"></a></dt>
+<dd><p>Method for CMV5</p>
+<p>Input is length of array containing datapoints and datapoints.
+Check if there are at least one set of consecutive datapoints that fulfills the requirement
+Xj - Xi &lt; 0, where Xi = Xj -1.
+If no such datapoints exist, return false.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv6">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DIST</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv6" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cmv.CMV.cmv9">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv9</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D_PTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EPSILON</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv9"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv9" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="src-decide-module">
-<h2>src.decide module<a class="headerlink" href="#src-decide-module" title="Permalink to this heading"></a></h2>
+<section id="module-src.decide">
+<span id="src-decide-module"></span><h2>src.decide module<a class="headerlink" href="#module-src.decide" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.decide.Decide">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.decide.</span></span><span class="sig-name descname"><span class="pre">Decide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/decide.html#Decide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.decide.Decide" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.decide.Decide.decide">
+<span class="sig-name descname"><span class="pre">decide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/decide.html#Decide.decide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.decide.Decide.decide" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-src">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src" title="Permalink to this heading"></a></h2>
