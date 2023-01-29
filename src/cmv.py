@@ -55,6 +55,15 @@ class CMV:
 
     @staticmethod
     def cmv2(POINTS, EPSILON):
+        """Checking if there exists at least one set of three consecutive data points which form an angle.
+
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param EPSILON: Deviation from PI.
+        :type EPSILON: float
+        :returns: True if the method's condition is satisfied otherwise return false.
+        :rtype: bool
+        """
         PI = math.pi
         if not (0 <= EPSILON < PI):
             return False
