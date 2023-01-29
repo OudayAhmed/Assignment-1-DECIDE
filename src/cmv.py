@@ -30,12 +30,23 @@ class CMV:
 
     @staticmethod
     def cmv0(POINTS, LENGTH1):
+        """"Check if there exists at least one set of consecutive data points that
+        are a distance greater than LENGTH1 apart.
+
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: float
+        :param LENGTH1: Float length greater than or equal to 0
+        :type LENGTH1: float
+        :returns: True if one set of consecutive data points are found that fulfills the
+        requirement.
+        :rtype: bool
+        """
         if not (0 <= LENGTH1):
             return False
         NUMPOINTS = len(POINTS)
         for i in range(NUMPOINTS - 1):
-            # if math.sqrt((POINTS[i][0] ** 2 - POINTS[i + 1][0] ** 2) + (
-            #         POINTS[i + 1][1] ** 2 - POINTS[i + 1][1] ** 2)) > LENGTH1:
+            if np.sqrt(((POINTS[i][0] - POINTS[i+1][0])**2) + ((
+            POINTS[i][1] - POINTS[i+1][1])**2)) > LENGTH1:
                 return True
         return False
 
