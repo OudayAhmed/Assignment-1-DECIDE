@@ -22,7 +22,31 @@ class TestCMV(TestCase):
         points = [[0.2, 0.3], [0.3, 0.4], [0.1, 0.3]]
         length1 = -0.1
         self.assertFalse(CMV.cmv0(points, length1))
-        
+
+    def test_cmv_1_positive(self):
+        """Positive test for cmv 1 method"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        radius1 = 1.4
+        self.assertTrue(CMV.cmv1(numPoints, points, radius1))
+
+    def test_cmv_1_negative(self):
+        """Negative test for cmv 1 method"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        radius1 = 2
+        self.assertFalse(CMV.cmv1(numPoints, points, radius1))
+
+    def test_cmv_1_negative_radius1(self):
+        """Test case for cmv 1 method with negative RADIUS1"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        radius1 = -1.4
+        self.assertFalse(CMV.cmv1(numPoints, points, radius1))
+
     def test_cmv_2_positive(self):
         """Positive test for cmv 2 method"""
         
@@ -204,3 +228,58 @@ class TestCMV(TestCase):
         length1 = 1
         length2 = 1
         self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))
+
+    def test_cmv_13_positive(self):
+        """Positive test for cmv 13 method"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        A_PTS = 1
+        B_PTS = 1
+        radius1 = 0.3
+        radius2 = 2.5
+        self.assertTrue(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))
+
+    def test_cmv_13_negative_fail_condition_1(self):
+        """Negative test of condition 1 for cmv 13 method"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        A_PTS = 1
+        B_PTS = 1
+        radius1 = 2.5
+        radius2 = 2.5
+        self.assertFalse(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))
+
+    def test_cmv_13_negative_fail_condition_2(self):
+        """Negative test of condition 2 for cmv 13 method"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        A_PTS = 1
+        B_PTS = 1
+        radius1 = 0.3
+        radius2 = 0.3
+        self.assertFalse(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))
+
+    def test_cmv_13_negative_radius2(self):
+        """Test case for cmv 13 method with negative RADIUS2"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        A_PTS = 1
+        B_PTS = 1
+        radius1 = 0.3
+        radius2 = -2.5
+        self.assertFalse(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))
+
+    def test_cmv_13_negative_NUMPOINTS(self):
+        """Test case for cmv 13 method with negative NUMPOINTS"""
+
+        numPoints = -3
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        A_PTS = 1
+        B_PTS = 1
+        radius1 = 0.3
+        radius2 = 2.5
+        self.assertFalse(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))

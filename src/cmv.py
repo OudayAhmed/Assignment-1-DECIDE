@@ -51,16 +51,30 @@ class CMV:
 
     @staticmethod
     def cmv1(NUMPOINTS, POINTS, RADIUS1):
+        """Checking if there exists at least one set of three consecutive data points that cannot all be contained
+        within or on a circle of radius RADIUS1.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param RADIUS1: Radius of a circle.
+        :type RADIUS1: float
+        :returns: True if the method's condition is satisfied otherwise return false.
+        :rtype: bool
+        """
         if not (0 <= RADIUS1):
             return False
-        # for i in range(NUMPOINTS - 3):
-        #     dis_1_2 = math.sqrt((POINTS[i][0] ** 2 - POINTS[i + 1][0] ** 2) + (POINTS[i][1] ** 2 - POINTS[i + 1][1] ** 2))
-        #     dis_2_3 = math.sqrt(
-        #         (POINTS[i + 1][0] ** 2 - POINTS[i + 2][0] ** 2) + (POINTS[i + 1][1] ** 2 - POINTS[i + 2][1] ** 2))
-        #     dis_3_1 = math.sqrt((POINTS[i + 2][0] ** 2 - POINTS[i][0] ** 2) + (POINTS[i + 2][1] ** 2 - POINTS[i][1] ** 2))
-        #     max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
-        #     if max_radius > RADIUS1:
-        #         return True
+        for i in range(NUMPOINTS - 3):
+            dis_1_2 = math.sqrt(
+                (POINTS[i][0] - POINTS[i + 1][0]) ** 2 + (POINTS[i][1] - POINTS[i + 1][1]) ** 2)
+            dis_2_3 = math.sqrt(
+                (POINTS[i + 1][0] - POINTS[i + 2][0]) ** 2 + (POINTS[i + 1][1] - POINTS[i + 2][1]) ** 2)
+            dis_3_1 = math.sqrt(
+                (POINTS[i + 2][0] - POINTS[i][0]) ** 2 + (POINTS[i + 2][1] ** 2 - POINTS[i][1]) ** 2)
+            max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
+            if max_radius > RADIUS1:
+                return True
         return False
 
     @staticmethod
@@ -305,10 +319,34 @@ class CMV:
 
     @staticmethod
     def cmv13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
+        """ Checking if both conditions are satisfied
+        1)There exists at least one set of three data points, separated by exactly A PTS and B PTS
+         consecutive intervening points, respectively, that cannot be contained within or on a circle of
+         radius RADIUS1.
+        2)There exists at least one set of three data points (which can be the same or different from
+         the three data points just mentioned) separated by exactly A PTS and B PTS consecutive
+         intervening points, respectively, that can be contained in or on a circle of radius RADIUS2.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param A_PTS: The number of int points.
+        :type A_PTS: int
+        :param B_PTS: The number of int points.
+        :type B_PTS: int
+        :param RADIUS1: Radius of a circle.
+        :type RADIUS1: float
+        :param RADIUS2: Radius of a circle.
+        :type RADIUS2: float
+        :returns: True if the method's conditions are satisfied otherwise return false.
+        :rtype: bool
+        """
         if NUMPOINTS < 5 or not (0 <= RADIUS2):
             return False
         i = 0
-        true_cnt = 0
+        con_1 = False
+        con_2 = False
         while i + A_PTS + B_PTS + 2 < NUMPOINTS:
             point_1_x = POINTS[i][0]
             point_1_y = POINTS[i][1]
@@ -316,15 +354,15 @@ class CMV:
             point_2_y = POINTS[i + A_PTS + 1][1]
             point_3_x = POINTS[i + A_PTS + B_PTS + 2][0]
             point_3_y = POINTS[i + A_PTS + B_PTS + 2][1]
-            dis_1_2 = math.sqrt((point_1_x ** 2 - point_2_x ** 2) + (point_1_y ** 2 - point_2_y ** 2))
-            dis_2_3 = math.sqrt((point_2_x ** 2 - point_3_x ** 2) + (point_2_y ** 2 - point_3_y ** 2))
-            dis_3_1 = math.sqrt((point_3_x ** 2 - point_1_x ** 2) + (point_3_y ** 2 - point_1_y ** 2))
+            dis_1_2 = math.sqrt((point_1_x - point_2_x) ** 2 + (point_1_y - point_2_y) ** 2)
+            dis_2_3 = math.sqrt((point_2_x - point_3_x) ** 2 + (point_2_y - point_3_y) ** 2)
+            dis_3_1 = math.sqrt((point_3_x - point_1_x) ** 2 + (point_3_y - point_1_y) ** 2)
             max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
             if max_radius > RADIUS1:
-                true_cnt += 1
+                con_1 = True
             if max_radius <= RADIUS2:
-                true_cnt += 1
-            if true_cnt >= 2:
+                con_2 = True
+            if con_1 and con_2:
                 return True
             i = i + 1
         return False
