@@ -283,3 +283,58 @@ class TestCMV(TestCase):
         radius1 = 0.3
         radius2 = 2.5
         self.assertFalse(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))
+
+    def test_cmv_14_positive(self):
+        """Positive test for cmv 14 method"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        E_PTS = 1
+        F_PTS = 1
+        area1 = 0.5
+        area2 = 2.5
+        self.assertTrue(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
+
+    def test_cmv_14_negative_fail_condition_1(self):
+        """Negative test of condition 1 for cmv 14 method"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        E_PTS = 1
+        F_PTS = 1
+        area1 = 2.5
+        area2 = 2.5
+        self.assertFalse(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
+
+    def test_cmv_14_negative_fail_condition_2(self):
+        """Negative test of condition 2 for cmv 14 method"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        E_PTS = 1
+        F_PTS = 1
+        area1 = 0.5
+        area2 = 0.5
+        self.assertFalse(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
+
+    def test_cmv_14_negative_area2(self):
+        """Test case for cmv 14 method with negative AREA2"""
+
+        numPoints = 6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        E_PTS = 1
+        F_PTS = 1
+        area1 = 0.5
+        area2 = -2.5
+        self.assertFalse(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
+
+    def test_cmv_14_negative_NUMPOINTS(self):
+        """Test case for cmv 14 method with negative NUMPOINTS"""
+
+        numPoints = -6
+        points = [[1, 2], [2, 2], [3, 2], [1, 1], [2, 1], [5, 1]]
+        E_PTS = 1
+        F_PTS = 1
+        area1 = 0.5
+        area2 = 2.5
+        self.assertFalse(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
