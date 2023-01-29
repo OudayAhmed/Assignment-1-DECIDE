@@ -104,7 +104,57 @@ class TestCMV(TestCase):
         d_pts = 2
         epsilon = 0.3
         self.assertFalse(CMV.cmv9(numpoints, points, c_pts, d_pts, epsilon))
-        
+
+    def test_cmv_10_positive(self):
+        """Positive test for cmv 10 method"""
+
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.4], [0.2, 0.1], [0.5, 0.1]]
+        e_pts = 1
+        f_pts = 2
+        area1 = 0.003
+        self.assertTrue(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
+
+    def test_cmv_10_negative(self):
+        """Negative test for cmv 10 method"""
+
+        numpoints = 5
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.2, 0.1]]
+        e_pts = 1
+        f_pts = 1
+        area1 = 0.009
+        self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
+
+    def test_cmv_10_only_three_numpoints(self):
+        """Test case for cmv 10 method with only three NUMPOINTS"""
+
+        numpoints = 3
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1]]
+        e_pts = 1
+        f_pts = 1
+        area1 = 0.003
+        self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
+
+    def test_cmv_10_negative_e_pts(self):
+        """Test case for cmv 10 method with negative E_PTS"""
+
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.4], [0.2, 0.1], [0.5, 0.1]]
+        e_pts = -1
+        f_pts = 1
+        area1 = 0.002
+        self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
+
+    def test_cmv_10_e_pts_and_f_pts_greater_than_numpoints_minus_three(self):
+        """Test case for cmv 10 method with E_PTS + F_PTS > NUMPOINTS - 3"""
+
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.4], [0.2, 0.1], [0.5, 0.1]]
+        e_pts = 3
+        f_pts = 4
+        area1 = 0.001
+        self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
+
     def test_cmv_12_positive(self):
         """Positive test case for cmv 12"""
         
@@ -154,5 +204,3 @@ class TestCMV(TestCase):
         length1 = 1
         length2 = 1
         self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))
-    
-        
