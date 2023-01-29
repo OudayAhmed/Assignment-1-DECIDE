@@ -135,12 +135,14 @@ class CMV:
 
     @staticmethod
     def cmv5(NUMPOINTS, POINTS):
-        """Method for CMV5
+        """Checking if there are at least one set of consecutive data points where Xj - Xi < 0.
 
-        Input is length of array containing datapoints and datapoints.
-        Check if there are at least one set of consecutive datapoints that fulfills the requirement
-        Xj - Xi < 0, where Xi = Xj -1.
-        If no such datapoints exist, return false.
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: float
+        :returns: True if condition Xj - Xi < 0 is satisfied, otherwise return False.
+        :rtype: bool
         """
 
         for i in range(NUMPOINTS - 2):
