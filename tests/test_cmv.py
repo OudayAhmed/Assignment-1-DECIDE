@@ -22,7 +22,31 @@ class TestCMV(TestCase):
         points = [[0.2, 0.3], [0.3, 0.4], [0.1, 0.3]]
         length1 = -0.1
         self.assertFalse(CMV.cmv0(points, length1))
-        
+
+    def test_cmv_1_positive(self):
+        """Positive test for cmv 1 method"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        radius1 = 1.4
+        self.assertTrue(CMV.cmv1(numPoints, points, radius1))
+
+    def test_cmv_1_negative(self):
+        """Negative test for cmv 1 method"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        radius1 = 2
+        self.assertFalse(CMV.cmv1(numPoints, points, radius1))
+
+    def test_cmv_1_negative_radius1(self):
+        """Test case for cmv 1 method with negative RADIUS1"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        radius1 = -1.4
+        self.assertFalse(CMV.cmv1(numPoints, points, radius1))
+
     def test_cmv_2_positive(self):
         """Positive test for cmv 2 method"""
         
