@@ -368,11 +368,35 @@ class CMV:
         return False
 
     @staticmethod
-    def cmv14(NUMPOINTS, POINTS, AREA1, AREA2, E_PTS, F_PTS):
+    def cmv14(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1, AREA2):
+        """ Checking if both conditions are satisfied
+        1)There exists at least one set of three data points, separated by exactly E PTS and F PTS consecutive
+         intervening points, respectively, that are the vertices of a triangle with area greater than AREA1.
+        2)There exist three data points (which can be the same or different
+         from the three data points just mentioned) separated by exactly E PTS and F PTS consecutive
+         intervening points, respectively, that are the vertices of a triangle with area less than
+         AREA2.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param E_PTS: The number of int points.
+        :type E_PTS: int
+        :param F_PTS: The number of int points.
+        :type F_PTS: int
+        :param AREA1: Area of a triangle.
+        :type AREA1: float
+        :param AREA2: Area of a triangle.
+        :type AREA2: float
+        :returns: True if the method's conditions are satisfied otherwise return false.
+        :rtype: bool
+        """
         if NUMPOINTS < 5 or not (0 <= AREA2):
             return False
         i = 0
-        true_cnt = 0
+        con_1 = False
+        con_2 = False
         while i + E_PTS + F_PTS + 2 < NUMPOINTS:
             point_1_x = POINTS[i][0]
             point_1_y = POINTS[i][1]
@@ -380,14 +404,16 @@ class CMV:
             point_2_y = POINTS[i + E_PTS + 1][1]
             point_3_x = POINTS[i + E_PTS + F_PTS + 2][0]
             point_3_y = POINTS[i + E_PTS + F_PTS + 2][1]
-            triangle_area = (point_1_x * point_2_y - point_1_x * point_3_y + \
-                             point_2_x * point_3_y - point_2_x * point_1_y + \
-                             point_3_x * point_1_y - point_3_x * point_2_y) / 2
+            triangle_area = abs((point_1_x * point_2_y - point_1_x * point_3_y +
+                                 point_2_x * point_3_y - point_2_x * point_1_y +
+                                 point_3_x * point_1_y - point_3_x * point_2_y)) / 2
             if triangle_area > AREA1:
-                true_cnt += 1
+                print("1")
+                con_1 = True
             if triangle_area < AREA2:
-                true_cnt += 1
-            if true_cnt >= 2:
+                print("2")
+                con_2 = True
+            if con_1 and con_2:
                 return True
             i = i + 1
         return False
