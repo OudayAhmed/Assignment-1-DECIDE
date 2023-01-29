@@ -37,8 +37,7 @@ class CMV:
         :type POINTS: float
         :param LENGTH1: Float length greater than or equal to 0
         :type LENGTH1: float
-        :returns: True if one set of consecutive data points are found that fulfills the
-        requirement.
+        :returns: True if one set of consecutive data points are found that fulfills the requirement.
         :rtype: bool
         """
         if not (0 <= LENGTH1):
