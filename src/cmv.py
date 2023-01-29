@@ -198,6 +198,22 @@ class CMV:
 
     @staticmethod
     def cmv9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON):
+        """Checking if there exists at least one set of three data points separated by exactly C_PTS and D_PTS
+        consecutive intervening points, respectively, that form an angle.
+
+        :param NUMPOINTS: The number of planar data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param C_PTS: The number of int points.
+        :type C_PTS: int
+        :param D_PTS: The number of int points.
+        :type D_PTS: int
+        :param EPSILON: Deviation from PI.
+        :type EPSILON: float
+        :returns: True if the method's condition is satisfied otherwise return false.
+        :rtype: bool
+        """
         PI = math.pi
         if (not (1 <= C_PTS)) or (not (1 <= D_PTS)) or (not (C_PTS + D_PTS <= NUMPOINTS - 3)) or NUMPOINTS < 5:
             return False
@@ -209,13 +225,14 @@ class CMV:
             point_2_y = POINTS[i + C_PTS + 1][1]
             point_3_x = POINTS[i + C_PTS + D_PTS + 2][0]
             point_3_y = POINTS[i + C_PTS + D_PTS + 2][1]
-            if not (point_1_x == point_2_x and point_1_y == point_2_y) or not (
+            if not (point_1_x == point_2_x and point_1_y == point_2_y) and not (
                     point_3_x == point_2_x and point_3_y == point_2_y):
                 u = [point_1_x - point_2_x, point_1_y - point_2_y]
                 v = [point_3_x - point_2_x, point_3_y - point_2_y]
                 angle = np.arccos(np.dot(u / np.linalg.norm(u), v / np.linalg.norm(v)))
                 if (angle < PI - EPSILON) or (angle > PI + EPSILON):
                     return True
+            i += 1
         return False
 
     @staticmethod
