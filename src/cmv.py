@@ -44,23 +44,38 @@ class CMV:
             return False
         NUMPOINTS = len(POINTS)
         for i in range(NUMPOINTS - 1):
-            if np.sqrt(((POINTS[i][0] - POINTS[i+1][0])**2) + ((
-            POINTS[i][1] - POINTS[i+1][1])**2)) > LENGTH1:
+            if np.sqrt(((POINTS[i][0] - POINTS[i + 1][0]) ** 2) + ((
+                                                                           POINTS[i][1] - POINTS[i + 1][
+                                                                       1]) ** 2)) > LENGTH1:
                 return True
         return False
 
     @staticmethod
     def cmv1(NUMPOINTS, POINTS, RADIUS1):
+        """Checking if there exists at least one set of three consecutive data points that cannot all be contained
+        within or on a circle of radius RADIUS1.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param RADIUS1: Radius of a circle.
+        :type RADIUS1: float
+        :returns: True if the method's condition is satisfied otherwise return false.
+        :rtype: bool
+        """
         if not (0 <= RADIUS1):
             return False
-        # for i in range(NUMPOINTS - 3):
-        #     dis_1_2 = math.sqrt((POINTS[i][0] ** 2 - POINTS[i + 1][0] ** 2) + (POINTS[i][1] ** 2 - POINTS[i + 1][1] ** 2))
-        #     dis_2_3 = math.sqrt(
-        #         (POINTS[i + 1][0] ** 2 - POINTS[i + 2][0] ** 2) + (POINTS[i + 1][1] ** 2 - POINTS[i + 2][1] ** 2))
-        #     dis_3_1 = math.sqrt((POINTS[i + 2][0] ** 2 - POINTS[i][0] ** 2) + (POINTS[i + 2][1] ** 2 - POINTS[i][1] ** 2))
-        #     max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
-        #     if max_radius > RADIUS1:
-        #         return True
+        for i in range(NUMPOINTS - 3):
+            dis_1_2 = math.sqrt(
+                (POINTS[i][0] - POINTS[i + 1][0]) ** 2 + (POINTS[i][1] - POINTS[i + 1][1]) ** 2)
+            dis_2_3 = math.sqrt(
+                (POINTS[i + 1][0] - POINTS[i + 2][0]) ** 2 + (POINTS[i + 1][1] - POINTS[i + 2][1]) ** 2)
+            dis_3_1 = math.sqrt(
+                (POINTS[i + 2][0] - POINTS[i][0]) ** 2 + (POINTS[i + 2][1] ** 2 - POINTS[i][1]) ** 2)
+            max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
+            if max_radius > RADIUS1:
+                return True
         return False
 
     @staticmethod
@@ -80,15 +95,16 @@ class CMV:
         for i in range(len(POINTS) - 2):
             point_1_x = POINTS[i][0]
             point_1_y = POINTS[i][1]
-            point_2_x = POINTS[i+1][0]
-            point_2_y = POINTS[i+1][1]
-            point_3_x = POINTS[i+2][0]
-            point_3_y = POINTS[i+2][1]
-            if not(point_1_x == point_2_x and point_1_y == point_2_y) or not(point_3_x == point_2_x and point_3_y == point_2_y):
+            point_2_x = POINTS[i + 1][0]
+            point_2_y = POINTS[i + 1][1]
+            point_3_x = POINTS[i + 2][0]
+            point_3_y = POINTS[i + 2][1]
+            if not (point_1_x == point_2_x and point_1_y == point_2_y) or not (
+                    point_3_x == point_2_x and point_3_y == point_2_y):
                 u = [point_1_x - point_2_x, point_1_y - point_2_y]
                 v = [point_3_x - point_2_x, point_3_y - point_2_y]
-                angle = np.arccos(np.dot(u/np.linalg.norm(u), v/np.linalg.norm(v)))
-                if (angle < PI-EPSILON) or (angle > PI+EPSILON):
+                angle = np.arccos(np.dot(u / np.linalg.norm(u), v / np.linalg.norm(v)))
+                if (angle < PI - EPSILON) or (angle > PI + EPSILON):
                     return True
         return False
 
@@ -96,15 +112,15 @@ class CMV:
     def cmv3(NUMPOINTS, POINTS, AREA1):
         if not (0 <= AREA1):
             return False
-        for i in range(NUMPOINTS-2):
+        for i in range(NUMPOINTS - 2):
             ax = POINTS[i][0]
             ay = POINTS[i][1]
-            bx = POINTS[i+1][0]
-            by = POINTS[i+1][1]
-            cx = POINTS[i+2][0]
-            cy = POINTS[i+2][1]
+            bx = POINTS[i + 1][0]
+            by = POINTS[i + 1][1]
+            cx = POINTS[i + 2][0]
+            cy = POINTS[i + 2][1]
 
-            TRIANGLEAREA = abs((ax*(by-cy) + bx*(cy-ay) + cx*(ay-by))/2)
+            TRIANGLEAREA = abs((ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) / 2)
             if TRIANGLEAREA > AREA1:
                 return True
         return False
@@ -185,8 +201,10 @@ class CMV:
                 else:
                     for j in range(N_PTS - 1):
                         side_1 = math.sqrt(
-                            (POINTS[i + N_PTS - 1][0] - POINTS[i][0]) ** 2 + (POINTS[i + N_PTS - 1][1] - POINTS[i][1]) ** 2)
-                        side_2 = math.sqrt((POINTS[i + j][0] - POINTS[i][0]) ** 2 + (POINTS[i + j][1] - POINTS[i][1]) ** 2)
+                            (POINTS[i + N_PTS - 1][0] - POINTS[i][0]) ** 2 + (
+                                    POINTS[i + N_PTS - 1][1] - POINTS[i][1]) ** 2)
+                        side_2 = math.sqrt(
+                            (POINTS[i + j][0] - POINTS[i][0]) ** 2 + (POINTS[i + j][1] - POINTS[i][1]) ** 2)
                         side_3 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i + j][0]) ** 2 + (
                                 POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
                         # cos_angle = math.acos((side_1 ** 2 + side_2 ** 2 - side_3 ** 2) / (2 * side_1 * side_2))
@@ -305,10 +323,34 @@ class CMV:
 
     @staticmethod
     def cmv13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
+        """ Checking if both conditions are satisfied
+        1)There exists at least one set of three data points, separated by exactly A PTS and B PTS
+         consecutive intervening points, respectively, that cannot be contained within or on a circle of
+         radius RADIUS1.
+        2)There exists at least one set of three data points (which can be the same or different from
+         the three data points just mentioned) separated by exactly A PTS and B PTS consecutive
+         intervening points, respectively, that can be contained in or on a circle of radius RADIUS2.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param A_PTS: The number of int points.
+        :type A_PTS: int
+        :param B_PTS: The number of int points.
+        :type B_PTS: int
+        :param RADIUS1: Radius of a circle.
+        :type RADIUS1: float
+        :param RADIUS2: Radius of a circle.
+        :type RADIUS2: float
+        :returns: True if the method's conditions are satisfied otherwise return false.
+        :rtype: bool
+        """
         if NUMPOINTS < 5 or not (0 <= RADIUS2):
             return False
         i = 0
-        true_cnt = 0
+        con_1 = False
+        con_2 = False
         while i + A_PTS + B_PTS + 2 < NUMPOINTS:
             point_1_x = POINTS[i][0]
             point_1_y = POINTS[i][1]
@@ -316,25 +358,49 @@ class CMV:
             point_2_y = POINTS[i + A_PTS + 1][1]
             point_3_x = POINTS[i + A_PTS + B_PTS + 2][0]
             point_3_y = POINTS[i + A_PTS + B_PTS + 2][1]
-            dis_1_2 = math.sqrt((point_1_x ** 2 - point_2_x ** 2) + (point_1_y ** 2 - point_2_y ** 2))
-            dis_2_3 = math.sqrt((point_2_x ** 2 - point_3_x ** 2) + (point_2_y ** 2 - point_3_y ** 2))
-            dis_3_1 = math.sqrt((point_3_x ** 2 - point_1_x ** 2) + (point_3_y ** 2 - point_1_y ** 2))
+            dis_1_2 = math.sqrt((point_1_x - point_2_x) ** 2 + (point_1_y - point_2_y) ** 2)
+            dis_2_3 = math.sqrt((point_2_x - point_3_x) ** 2 + (point_2_y - point_3_y) ** 2)
+            dis_3_1 = math.sqrt((point_3_x - point_1_x) ** 2 + (point_3_y - point_1_y) ** 2)
             max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
             if max_radius > RADIUS1:
-                true_cnt += 1
+                con_1 = True
             if max_radius <= RADIUS2:
-                true_cnt += 1
-            if true_cnt >= 2:
+                con_2 = True
+            if con_1 and con_2:
                 return True
             i = i + 1
         return False
 
     @staticmethod
-    def cmv14(NUMPOINTS, POINTS, AREA1, AREA2, E_PTS, F_PTS):
+    def cmv14(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1, AREA2):
+        """ Checking if both conditions are satisfied
+        1)There exists at least one set of three data points, separated by exactly E PTS and F PTS consecutive
+         intervening points, respectively, that are the vertices of a triangle with area greater than AREA1.
+        2)There exist three data points (which can be the same or different
+         from the three data points just mentioned) separated by exactly E PTS and F PTS consecutive
+         intervening points, respectively, that are the vertices of a triangle with area less than
+         AREA2.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param E_PTS: The number of int points.
+        :type E_PTS: int
+        :param F_PTS: The number of int points.
+        :type F_PTS: int
+        :param AREA1: Area of a triangle.
+        :type AREA1: float
+        :param AREA2: Area of a triangle.
+        :type AREA2: float
+        :returns: True if the method's conditions are satisfied otherwise return false.
+        :rtype: bool
+        """
         if NUMPOINTS < 5 or not (0 <= AREA2):
             return False
         i = 0
-        true_cnt = 0
+        con_1 = False
+        con_2 = False
         while i + E_PTS + F_PTS + 2 < NUMPOINTS:
             point_1_x = POINTS[i][0]
             point_1_y = POINTS[i][1]
@@ -342,14 +408,14 @@ class CMV:
             point_2_y = POINTS[i + E_PTS + 1][1]
             point_3_x = POINTS[i + E_PTS + F_PTS + 2][0]
             point_3_y = POINTS[i + E_PTS + F_PTS + 2][1]
-            triangle_area = (point_1_x * point_2_y - point_1_x * point_3_y + \
-                             point_2_x * point_3_y - point_2_x * point_1_y + \
-                             point_3_x * point_1_y - point_3_x * point_2_y) / 2
+            triangle_area = abs((point_1_x * point_2_y - point_1_x * point_3_y +
+                             point_2_x * point_3_y - point_2_x * point_1_y +
+                             point_3_x * point_1_y - point_3_x * point_2_y)) / 2
             if triangle_area > AREA1:
-                true_cnt += 1
+                con_1 = True
             if triangle_area < AREA2:
-                true_cnt += 1
-            if true_cnt >= 2:
+                con_2 = True
+            if con_1 and con_2:
                 return True
             i = i + 1
         return False
@@ -366,6 +432,6 @@ class CMV:
             self.cmv9(self.NUMPOINTS, self.POINTS, self.C_PTS, self.D_PTS, self.EPSILON),
             self.cmv12(self.NUMPOINTS, self.POINTS, self.K_PTS, self.LENGTH1, self.LENGTH2),
             self.cmv13(self.NUMPOINTS, self.POINTS, self.A_PTS, self.B_PTS, self.RADIUS1, self.RADIUS2),
-            self.cmv14(self.NUMPOINTS, self.POINTS, self.AREA1, self.AREA2, self.E_PTS, self.F_PTS),
+            self.cmv14(self.NUMPOINTS, self.POINTS, self.E_PTS, self.F_PTS, self.AREA1, self.AREA2),
         ]
         return CMV
