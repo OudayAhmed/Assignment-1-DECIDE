@@ -51,16 +51,30 @@ class CMV:
 
     @staticmethod
     def cmv1(NUMPOINTS, POINTS, RADIUS1):
+        """Checking if there exists at least one set of three consecutive data points that cannot all be contained
+        within or on a circle of radius RADIUS1.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param RADIUS1: Radius of a circle.
+        :type RADIUS1: float
+        :returns: True if the method's condition is satisfied otherwise return false.
+        :rtype: bool
+        """
         if not (0 <= RADIUS1):
             return False
-        # for i in range(NUMPOINTS - 3):
-        #     dis_1_2 = math.sqrt((POINTS[i][0] ** 2 - POINTS[i + 1][0] ** 2) + (POINTS[i][1] ** 2 - POINTS[i + 1][1] ** 2))
-        #     dis_2_3 = math.sqrt(
-        #         (POINTS[i + 1][0] ** 2 - POINTS[i + 2][0] ** 2) + (POINTS[i + 1][1] ** 2 - POINTS[i + 2][1] ** 2))
-        #     dis_3_1 = math.sqrt((POINTS[i + 2][0] ** 2 - POINTS[i][0] ** 2) + (POINTS[i + 2][1] ** 2 - POINTS[i][1] ** 2))
-        #     max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
-        #     if max_radius > RADIUS1:
-        #         return True
+        for i in range(NUMPOINTS - 3):
+            dis_1_2 = math.sqrt(
+                (POINTS[i][0] - POINTS[i + 1][0]) ** 2 + (POINTS[i][1] - POINTS[i + 1][1]) ** 2)
+            dis_2_3 = math.sqrt(
+                (POINTS[i + 1][0] - POINTS[i + 2][0]) ** 2 + (POINTS[i + 1][1] - POINTS[i + 2][1]) ** 2)
+            dis_3_1 = math.sqrt(
+                (POINTS[i + 2][0] - POINTS[i][0]) ** 2 + (POINTS[i + 2][1] ** 2 - POINTS[i][1]) ** 2)
+            max_radius = max(dis_1_2, dis_2_3, dis_3_1) / 2
+            if max_radius > RADIUS1:
+                return True
         return False
 
     @staticmethod
