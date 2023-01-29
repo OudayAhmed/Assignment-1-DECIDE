@@ -338,3 +338,4 @@ class TestCMV(TestCase):
         area1 = 0.5
         area2 = 2.5
         self.assertFalse(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
+
