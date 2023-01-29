@@ -154,3 +154,53 @@ class TestCMV(TestCase):
         f_pts = 4
         area1 = 0.001
         self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
+
+    def test_cmv_12_positive(self):
+        """Positive test case for cmv 12"""
+        
+        numpoints = 3
+        points = [[0.5, 0.4], [1.0, 0.7], [2.2, 0.7]]
+        k_pts = 1
+        length1 = 1
+        length2 = 1
+        self.assertTrue(CMV.cmv12(numpoints, points, k_pts, length1, length2))
+        
+    def test_cmv_12_negative(self):
+        """Negative test case for cmv 12"""
+        
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+        k_pts = 1
+        length1 = 1
+        length2 = 1
+        self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))
+        
+    def test_cmv_12_negative(self):
+        """Test case for cmv 12 method with less than 3 NUMPOINTS"""
+        
+        numpoints = 2
+        points = [[0.1, 0.2], [0.8, 0.9]]
+        k_pts = 1
+        length1 = 1
+        length2 = 1
+        self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))
+        
+    def test_cmv_12_negative_length2(self):
+        """Test case for cmv 12 method with negative LENGTH2"""
+        
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+        k_pts = 2
+        length1 = 1
+        length2 = -1
+        self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))
+    
+    def test_cmv_12_negative_k_pts(self):
+        """Test case for cmv 12 method with negative K_PTS"""
+        
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+        k_pts = -1
+        length1 = 1
+        length2 = 1
+        self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))

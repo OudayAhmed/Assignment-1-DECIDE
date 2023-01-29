@@ -239,6 +239,7 @@ class CMV:
     def cmv10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1):
         """Checking if there exists at least one set of three data points separated by exactly E_PTS and F_PTS consecutive
          intervening points, respectively, that are the vertices of a triangle with area greater than AREA1.
+         
         :param NUMPOINTS: The number of planar data points.
         :type NUMPOINTS: int
         :param POINTS: 2Darray containing the coordinates of data points.
@@ -267,6 +268,40 @@ class CMV:
                 return True
             i += 1
         return False
+    
+    @staticmethod    
+    def cmv12(NUMPOINTS, POINTS, K_PTS, LENGTH1, LENGTH2):
+        """Checking if there exists at least one set of two data points seperated by exactly K_PTS consecutive intervening points.
+        The distance of these points are greater than the LENGTH1 apart. 
+        In addition it checks if there also exist at least one set of two data points separated by exactly K_PTS
+        consecutive intervening points with a distance less than LENGTH2 apart from each other. 
+
+        :param K_PTS: The number of int points
+        :type K_PTS: int
+        :param LENGTH1: The length of a distance
+        :type LENGTH1: float
+        :param LENGTH2: The lenght of a distance
+        :tyoe LENGTH2: float
+        :returns: True if both the conditions in the method are satisfied else false.
+        :rtype: bool 
+        """
+        if NUMPOINTS < 3 or LENGTH2 <= 0 or K_PTS < 0:
+            return False
+        
+        length1_check = False
+        length2_check = False
+        
+        for i in range(NUMPOINTS - K_PTS - 1):
+            distance = math.sqrt((POINTS[i][0] - POINTS[i + K_PTS + 1][0]) ** 2 + (POINTS[i][1] - POINTS[i + K_PTS + 1][1]) ** 2)
+            if distance > LENGTH1:
+                length1_check = True
+            if distance > LENGTH2:
+                length2_check = True
+        
+        if length1_check and length2_check:
+            return True
+        else:
+            return False
 
     @staticmethod
     def cmv13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
@@ -329,6 +364,7 @@ class CMV:
             self.cmv5(self.NUMPOINTS, self.POINTS),
             self.cmv6(self.NUMPOINTS, self.POINTS, self.N_PTS, self.DIST),
             self.cmv9(self.NUMPOINTS, self.POINTS, self.C_PTS, self.D_PTS, self.EPSILON),
+            self.cmv12(self.NUMPOINTS, self.POINTS, self.K_PTS, self.LENGTH1, self.LENGTH2),
             self.cmv13(self.NUMPOINTS, self.POINTS, self.A_PTS, self.B_PTS, self.RADIUS1, self.RADIUS2),
             self.cmv14(self.NUMPOINTS, self.POINTS, self.AREA1, self.AREA2, self.E_PTS, self.F_PTS),
         ]
