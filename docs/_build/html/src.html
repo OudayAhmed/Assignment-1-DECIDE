@@ -140,11 +140,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="src.cmv.CMV.cmv5">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cmv5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NUMPOINTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POINTS</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/cmv.html#CMV.cmv5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.cmv.CMV.cmv5" title="Permalink to this definition"></a></dt>
-<dd><p>Method for CMV5</p>
-<p>Input is length of array containing datapoints and datapoints.
-Check if there are at least one set of consecutive datapoints that fulfills the requirement
-Xj - Xi &lt; 0, where Xi = Xj -1.
-If no such datapoints exist, return false.</p>
+<dd><p>Checking if there are at least one set of consecutive data points where Xj - Xi &lt; 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>NUMPOINTS</strong> (<em>int</em>) – Number of data points.</p></li>
+<li><p><strong>POINTS</strong> (<em>float</em>) – 2Darray containing the coordinates of data points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if condition Xj - Xi &lt; 0 is satisfied, otherwise return False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
