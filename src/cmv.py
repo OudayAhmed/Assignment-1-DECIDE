@@ -219,6 +219,39 @@ class CMV:
         return False
 
     @staticmethod
+    def cmv10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1):
+        """Checking if there exists at least one set of three data points separated by exactly E_PTS and F_PTS consecutive
+         intervening points, respectively, that are the vertices of a triangle with area greater than AREA1.
+        :param NUMPOINTS: The number of planar data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param E_PTS: The number of int points.
+        :type E_PTS: int
+        :param F_PTS: The number of int points.
+        :type F_PTS: int
+        :param AREA1: The area.
+        :type AREA1: float
+        :returns: True if the method's condition is satisfied otherwise return false.
+        :rtype: bool
+        """
+        if (not (1 <= E_PTS)) or (not (1 <= F_PTS)) or (not (E_PTS + F_PTS <= NUMPOINTS - 3)) or NUMPOINTS < 5:
+            return False
+        i = 0
+        while (i + E_PTS + F_PTS + 2 < NUMPOINTS):
+            point_1_x = POINTS[i][0]
+            point_1_y = POINTS[i][1]
+            point_2_x = POINTS[i + E_PTS + 1][0]
+            point_2_y = POINTS[i + E_PTS + 1][1]
+            point_3_x = POINTS[i + E_PTS + F_PTS + 2][0]
+            point_3_y = POINTS[i + E_PTS + F_PTS + 2][1]
+            triangle_area = abs((point_1_x*(point_2_y-point_3_y) + point_2_x*(point_3_y-point_1_y) + point_3_x*(point_1_y-point_2_y))/2)
+            if triangle_area > AREA1:
+                return True
+            i += 1
+        return False
+
+    @staticmethod
     def cmv13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
         if NUMPOINTS < 5 or not (0 <= RADIUS2):
             return False
