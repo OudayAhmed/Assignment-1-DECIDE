@@ -211,6 +211,32 @@ class CMV:
         return False
 
     @staticmethod
+    def cmv7(NUMPOINTS, POINTS, K_PTS, LENGTH1):
+        """"Check if there exists at least one set of two data points separated by K_PTS consecutive intervening
+        points that are a distance greater than LENGTH1 apart.
+
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: float
+        :param K_PTS: The number of int points.
+        :type K_PTS: int
+        :param LENGTH1: Float length greater or equal to 0.
+        :type LENGTH1: float
+        :returns: True if conditions are met, otherwise False.
+        :rtype: bool
+        """
+
+        if (not (1 <= K_PTS) and (not(K_PTS <= NUMPOINTS - 2))) or NUMPOINTS < 3:
+            return False
+        else:
+            for i in range(NUMPOINTS - K_PTS - 1):
+                if((np.sqrt(((POINTS[i][0] - POINTS[i + K_PTS + 1][0])**2) + 
+                ((POINTS[i][1] - POINTS[i + K_PTS + 1][1])**2))) > LENGTH1):
+                    return True
+        return False
+
+    @staticmethod
     def cmv9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON):
         """Checking if there exists at least one set of three data points separated by exactly C_PTS and D_PTS
         consecutive intervening points, respectively, that form an angle.
