@@ -108,6 +108,17 @@ class CMV:
 
     @staticmethod
     def cmv3(NUMPOINTS, POINTS, AREA1):
+        """ Checking if there exists at least one set of three consecutive data points that are the vertices of a triangle with area greater than AREA1.
+        :param NUMPOINTS: The number of planar data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: float
+        :param AREA1: The area
+        :type AREA1: float
+        :returns: True if area of three consecutive points is greater than AREA1. Otherwise False
+        :rtype: bool
+        """
+        
         if not (0 <= AREA1):
             return False
         for i in range(NUMPOINTS-2):
