@@ -2,8 +2,13 @@ import unittest
 from unittest import TestCase
 from src.cmv import CMV
 
+"""TestCMV"""
 
 class TestCMV(TestCase):
+    """"TestCMV class
+
+    Contains all the test cases for all CMV conditions.
+    """
 
     def test_cmv0_negative(self):
         """Test case for CMV0 method with false sets of data points."""
