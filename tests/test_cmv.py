@@ -88,6 +88,33 @@ class TestCMV(TestCase):
         points = [[0.4, 0.3]]
         numpoints = 1
         self.assertFalse(CMV.cmv5(numpoints,points))
+    
+    def test_cmv7_positive(self):
+        """Positive test for CMV 7 method"""
+
+        numpoints = 3
+        points = [[0.1, 0.3], [0.2, 0.1], [0.3, 0.4]]
+        k_pts = 1
+        length1 = 0.1
+        self.assertTrue(CMV.cmv7(numpoints, points, k_pts, length1))
+    
+    def test_cmv7_negative(self):
+        """"Negative test for CMV 7 method"""
+
+        numpoints = 4
+        points = [[0.3, 0.2], [0.4, 0.1], [0.2, 0.5], [0.5, 0.3]]
+        k_pts = 2
+        length1 = 0.4
+        self.assertFalse(CMV.cmv7(numpoints, points, k_pts, length1))
+
+    def test_cmv7_negative_k_pts(self):
+        """Test case for CMV7 with invalid k_pts"""
+
+        numpoints = 3
+        points = [[0.1, 0.3], [0.2, 0.1], [0.3, 0.4]]
+        k_pts = -1
+        length1 = 0.1
+        self.assertFalse(CMV.cmv7(numpoints, points, k_pts, length1))
 
     def test_cmv_9_positive(self):
         """Positive test for cmv 9 method"""
