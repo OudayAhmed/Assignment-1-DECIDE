@@ -1,12 +1,13 @@
 import yaml
-from yaml import Loader
 from src.decide import Decide
 
-
 def main():
-    inputFile = open('input.yml', 'r')
-    input = yaml.load(inputFile, Loader=Loader)
-    Decide(input).decide()
+    with open("tests/input/input.yml", 'r') as f:
+        input = yaml.safe_load(f)
+    if Decide(input).decide() is True:
+        print("YES")
+    else:
+        print("NO")
 
 if __name__=="__main__":
     main()
