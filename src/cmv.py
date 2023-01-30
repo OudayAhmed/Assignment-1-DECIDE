@@ -576,10 +576,8 @@ class CMV:
                                  point_2_x * point_3_y - point_2_x * point_1_y +
                                  point_3_x * point_1_y - point_3_x * point_2_y)) / 2
             if triangle_area > AREA1:
-                print("1")
                 con_1 = True
             if triangle_area < AREA2:
-                print("2")
                 con_2 = True
             if con_1 and con_2:
                 return True
@@ -598,6 +596,6 @@ class CMV:
             self.cmv9(self.NUMPOINTS, self.POINTS, self.C_PTS, self.D_PTS, self.EPSILON),
             self.cmv12(self.NUMPOINTS, self.POINTS, self.K_PTS, self.LENGTH1, self.LENGTH2),
             self.cmv13(self.NUMPOINTS, self.POINTS, self.A_PTS, self.B_PTS, self.RADIUS1, self.RADIUS2),
-            self.cmv14(self.NUMPOINTS, self.POINTS, self.AREA1, self.AREA2, self.E_PTS, self.F_PTS),
+            self.cmv14(self.NUMPOINTS, self.POINTS, self.E_PTS, self.F_PTS, self.AREA1, self.AREA2),
         ]
         return CMV
