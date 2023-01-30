@@ -204,6 +204,40 @@ class TestCMV(TestCase):
         dist = 1
         self.assertFalse(CMV.cmv6(numpoints, points, n_pts, dist))
         
+    def test_cmv_8_positive(self):
+        """Positive test for CMV8 method"""
+
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.2], [0.2, 0.3], [0.3, 0.9]]
+        a_pts = 1
+        b_pts = 1
+        radius1 = 0.1
+        self.assertTrue(CMV.cmv8(numpoints, points, a_pts, b_pts, radius1))
+
+
+
+    def test_cmv_8_negative(self):
+        """Negative test for CMV8 method"""
+
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.2], [0.2, 0.3], [0.3, 0.9]]
+        a_pts = 1
+        b_pts = 1
+        radius1 = 100
+        self.assertFalse(CMV.cmv8(numpoints, points, a_pts, b_pts, radius1))
+
+
+    def test_cmv_8_negative_numpoints_less_than_5(self):
+        """Positive test for CMV8 method"""
+
+        numpoints = 4
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8]]
+        a_pts = 1
+        b_pts = 1
+        radius1 = 0.1
+        self.assertFalse(CMV.cmv8(numpoints, points, a_pts, b_pts, radius1))
+
+
     def test_cmv_9_positive(self):
         """Positive test for cmv 9 method"""
 
