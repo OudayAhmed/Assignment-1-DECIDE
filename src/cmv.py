@@ -98,7 +98,7 @@ class CMV:
             point_2_y = POINTS[i+1][1]
             point_3_x = POINTS[i+2][0]
             point_3_y = POINTS[i+2][1]
-            if not(point_1_x == point_2_x and point_1_y == point_2_y) or not(point_3_x == point_2_x and point_3_y == point_2_y):
+            if not(point_1_x == point_2_x and point_1_y == point_2_y) and not(point_3_x == point_2_x and point_3_y == point_2_y):
                 u = [point_1_x - point_2_x, point_1_y - point_2_y]
                 v = [point_3_x - point_2_x, point_3_y - point_2_y]
                 angle = np.arccos(np.dot(u/np.linalg.norm(u), v/np.linalg.norm(v)))
