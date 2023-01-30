@@ -75,6 +75,42 @@ class TestCMV(TestCase):
         epsilon = 0.5
         self.assertFalse(CMV.cmv2(points, epsilon))
 
+    def test_cmv4_positive(self):
+        """Positive test for cmv4 method"""
+        
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+        q_pts = 2
+        quads = 2
+        self.assertTrue(CMV.cmv4(numpoints, points, q_pts, quads))
+        
+    def test_cmv4_negative(self):
+        """Negative test for cmv4 method."""
+        
+        numpoints = 2
+        points = [[0.1, 0.2], [0.2, 0.1]]
+        q_pts = 3
+        quads = 2
+        self.assertFalse(CMV.cmv4(numpoints, points, q_pts, quads))
+        
+    def test_cmv4_negative_quads_wrong_size(self):
+        """Test case for cmv4 method when QUADS is greater than 3."""
+        
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+        q_pts = 2
+        quads = 4
+        self.assertFalse(CMV.cmv4(numpoints, points, q_pts, quads))
+        
+    def test_cmv4_negative_qpts_greater_than_numpoints(self):
+        """Test case for cmv4 method when Q_PTS > NUMPOINTS."""
+        
+        numpoints = 7
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+        q_pts = 8
+        quads = 2
+        self.assertFalse(CMV.cmv4(numpoints, points, q_pts, quads))
+        
     def test_cmv5_negative(self):
         """Test case for CMV5 method with false sets of data points."""
 

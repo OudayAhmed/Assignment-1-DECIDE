@@ -125,11 +125,23 @@ class CMV:
 
     @staticmethod
     def cmv4(NUMPOINTS, POINTS, Q_PTS, QUADS):
+        """
+        Checking that there exists at least one set of Q_PTS consecutive data points that lie in more than QUADS quadrants.
+        
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: 2Darray(float)
+        :param Q_PTS: The number of consecutive data points.
+        :type Q_PTS: int
+        :param QUADS: Number of quadrants
+        :type QUADS: int
+        :returns: True is a set of Q_PTS lie in more than QUAD quadrants and 1<= QUADS <=3 else False
+        """
         if not (2 <= Q_PTS <= NUMPOINTS) or not (1 <= QUADS <= 3):
             return False
         quadrant = [(0, 0), (-1, 0), (0, -1), (1, 0)]
         last_quad = None
-
         for i in range(NUMPOINTS - 1):
             if POINTS[i][0] >= 0:
                 if POINTS[i][1] >= 0:
@@ -164,7 +176,13 @@ class CMV:
                             last_quad = quadrant[2]
                     else:
                         last_quad = quadrant[2]
+        
         return False
+    numpoints = 7
+    points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
+    q_pts = 8
+    quads = 2
+    print(cmv4(numpoints, points, q_pts, quads))
 
     @staticmethod
     def cmv5(NUMPOINTS, POINTS):
