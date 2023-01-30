@@ -278,6 +278,52 @@ class CMV:
         return False
 
     @staticmethod
+    def cmv8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1):
+        """
+        :param NUMPOINTS: Number of data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: float
+        :param A_PTS: The number of int points.
+        :type A_PTS: int
+        :param B_PTS: The number of int points.
+        :type B_PTS: int
+        :param RADIUS1: Radius of a circle.
+        :type RADIUS1: float
+        :returns: True if conditions are met, otherwise False.
+        :rtype: bool
+        """
+        
+        if (NUMPOINTS < 5):
+            return False
+        if (not(1 <= A_PTS)):
+            return False
+        if (not(1 <= B_PTS)):
+            return False
+        if (not(A_PTS + B_PTS <= NUMPOINTS-3)):
+            return False
+
+        i = 0
+        while (i + A_PTS + B_PTS + 2 < NUMPOINTS):
+            point_1 = (POINTS[i][0], POINTS[i][1])
+            point_2 = (POINTS[i + A_PTS + 1][0], POINTS[i + A_PTS + 1][1])
+            point_3 = (POINTS[i + A_PTS + B_PTS + 2][0], POINTS[i + A_PTS + B_PTS + 2][1])
+            
+            distance1 = math.dist(point_1, point_2)
+            distance2 = math.dist(point_2, point_3)
+            distance3 = math.dist(point_3, point_1)
+
+            s = (distance1+distance2+distance3)/2
+            area = math.sqrt(s * (s - distance1) * (s - distance2) * (s - distance3))
+            circradius = distance1 * distance2 * distance3 / (4 * area)
+
+            if (circradius > RADIUS1):
+                return True
+            i = i + 1
+
+        return False
+            
+    @staticmethod
     def cmv9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON):
         """Checking if there exists at least one set of three data points separated by exactly C_PTS and D_PTS
         consecutive intervening points, respectively, that form an angle.
