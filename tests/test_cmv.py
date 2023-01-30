@@ -159,6 +159,51 @@ class TestCMV(TestCase):
         length1 = 0.1
         self.assertFalse(CMV.cmv7(numpoints, points, k_pts, length1))
 
+    def test_cmv_6_positive(self):
+        """Positive test for cmv 6 method"""
+        
+        numpoints = 5
+        points = [[1, 1], [5, 2], [1, 3], [1, 4], [1, 5]]
+        n_pts = 3
+        dist = 1
+        self.assertTrue(CMV.cmv6(numpoints, points, n_pts, dist))
+        
+    def test_cmv_6_negative(self):
+        """Negative test for cmv 6 method"""
+        
+        numpoints = 3
+        points = [[1,0], [2,2], [1,1]]
+        n_pts = 3
+        dist = 4
+        self.assertFalse(CMV.cmv6(numpoints, points, n_pts, dist))
+        
+    def test_cmv_6_negative_dist(self):
+        """Negative test for cmv 6 method when the distance is negative"""
+        
+        numpoints = 5
+        points = [[1, 1], [5, 2], [1, 3], [1, 4], [1, 5]]
+        n_pts = 3
+        dist = -1
+        self.assertFalse(CMV.cmv6(numpoints, points, n_pts, dist))
+        
+    def test_cmv_6_negative_npts_greater_than_numpoints(self):
+        """Negative test for cmv 6 method when N_PTS > NUMPOINTS"""
+        
+        numpoints = 5
+        points = [[1, 1], [5, 2], [1, 3], [1, 4], [1, 5]]
+        n_pts = 7
+        dist = 1
+        self.assertFalse(CMV.cmv6(numpoints, points, n_pts, dist))
+        
+    def test_cmv_6_negative_low_npts(self):
+        """Negative test for cmv 6 method when N_PTS < 3"""
+        
+        numpoints = 5
+        points = [[1, 1], [5, 2], [1, 3], [1, 4], [1, 5]]
+        n_pts = 2
+        dist = 1
+        self.assertFalse(CMV.cmv6(numpoints, points, n_pts, dist))
+        
     def test_cmv_9_positive(self):
         """Positive test for cmv 9 method"""
 
@@ -269,7 +314,7 @@ class TestCMV(TestCase):
         length2 = 1
         self.assertFalse(CMV.cmv12(numpoints, points, k_pts, length1, length2))
         
-    def test_cmv_12_negative(self):
+    def test_cmv_12_invalid_numpoints(self):
         """Test case for cmv 12 method with less than 3 NUMPOINTS"""
         
         numpoints = 2

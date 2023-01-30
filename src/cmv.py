@@ -108,6 +108,17 @@ class CMV:
 
     @staticmethod
     def cmv3(NUMPOINTS, POINTS, AREA1):
+        """ Checking if there exists at least one set of three consecutive data points that are the vertices of a triangle with area greater than AREA1.
+        :param NUMPOINTS: The number of planar data points.
+        :type NUMPOINTS: int
+        :param POINTS: 2Darray containing the coordinates of data points.
+        :type POINTS: float
+        :param AREA1: The area
+        :type AREA1: float
+        :returns: True if area of three consecutive points is greater than AREA1. Otherwise False
+        :rtype: bool
+        """
+        
         if not (0 <= AREA1):
             return False
         for i in range(NUMPOINTS-2):
@@ -204,28 +215,44 @@ class CMV:
 
     @staticmethod
     def cmv6(NUMPOINTS, POINTS, N_PTS, DIST):
+        """
+        Checking if there exists at least one set of N_PTS consecutive data points such that at least
+        one of the points lies a distance greater than DIST from the line joining the first and last of these
+        N_PTS points.
+        :param: NUMPOINTS: Number of data points.
+        :type: NUMPOINTS: int
+        :param: POINTS: 2Darray containing the coordinates of data points.
+        :type: POINTS: 2Darray (floats)
+        :param: N_PTS: Number of consecutive points.
+        :type: N_PTS: int
+        :param: DIST: A distance
+        :type: DIST: float
+        :returns: True if 3 <= N_PTS <= NUMPOINTS and 0 <= DIST else False
+        :rtype: bool
+        """
         if NUMPOINTS < 3:
             return False
-        elif N_PTS > NUMPOINTS or N_PTS > 3:
+        if NUMPOINTS < N_PTS or DIST <= 0:
             return False
-        else:
-            for i in range(NUMPOINTS - N_PTS):
-                if POINTS[i + N_PTS - 1][0] == POINTS[i][0] and POINTS[i - N_PTS - 1][1] == POINTS[i][1]:
-                    for j in range(N_PTS - 1):
-                        if math.sqrt(POINTS[i][0] * POINTS[i + j][0] + POINTS[i][1] * POINTS[i + j]) > DIST:
-                            return True
-                else:
-                    for j in range(N_PTS - 1):
-                        side_1 = math.sqrt(
+        for i in range(0, NUMPOINTS - N_PTS):
+            if POINTS[i][0] == POINTS[i + N_PTS - 1][0] and POINTS[i][1] == POINTS[i + N_PTS - 1][1]:
+                for j in range(1, i + N_PTS - 1):
+                    if math.sqrt((POINTS[i][0] - POINTS[i + j][0]) ** 2 + (POINTS[i][1] - POINTS[i + j][1]) ** 2) > DIST:
+                        return True
+            else:
+                for j in range(1, N_PTS):
+                    side_1 = math.sqrt(
                             (POINTS[i + N_PTS - 1][0] - POINTS[i][0]) ** 2 + (POINTS[i + N_PTS - 1][1] - POINTS[i][1]) ** 2)
-                        side_2 = math.sqrt((POINTS[i + j][0] - POINTS[i][0]) ** 2 + (POINTS[i + j][1] - POINTS[i][1]) ** 2)
-                        side_3 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i + j][0]) ** 2 + (
-                                POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
-                        # cos_angle = math.acos((side_1 ** 2 + side_2 ** 2 - side_3 ** 2) / (2 * side_1 * side_2))
-                        # comparison_distance = math.sin(cos_angle) * side_2
+                    side_2 = math.sqrt((POINTS[i + j][0] - POINTS[i][0]) ** 2 + (POINTS[i + j][1] - POINTS[i][1]) ** 2)
+                    side_3 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i + j][0]) ** 2 + (
+                            POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
+                    if side_1 == 0.0 or side_2 == 0.0 or side_3 == 0.0:
+                        continue   
+                    cos_angle = math.acos((side_1 ** 2 + side_2 ** 2 - side_3 ** 2) / (2 * side_1 * side_2))
+                    comparison_distance = math.sin(cos_angle) * side_2
 
-                        # if (comparison_distance > DIST):
-                        #     return True
+                    if (comparison_distance > DIST):
+                            return True
         return False
 
     @staticmethod
