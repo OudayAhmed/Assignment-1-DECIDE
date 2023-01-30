@@ -75,6 +75,29 @@ class TestCMV(TestCase):
         epsilon = 0.5
         self.assertFalse(CMV.cmv2(points, epsilon))
 
+    def test_cmv_3_positive(self):
+        """Positive test case for CMV3 method"""
+        points = [[0.1, 0.2], [0.3, 0.1], [0.2, 0.3]]
+        numpoints = 3
+        area1 = 0.01
+        self.assertTrue(CMV.cmv3(numpoints, points, area1))
+
+    def test_cmv_3_negative(self):
+        """negative test case for CMV3 method, AREA1 > TRIANGLEAREA"""
+
+        points = [[0.1, 0.2], [0.3, 0.1], [0.2, 0.3]]
+        numpoints = 3
+        area1 = 1
+        self.assertFalse(CMV.cmv3(numpoints, points, area1))
+
+    def test_cmv_3_negative_area(self):
+        """Test case for CMV3 method with negative AREA1"""
+
+        points = [[0.1, 0.2], [0.3, 0.1], [0.2, 0.3]]
+        numpoints = 3
+        area1 = -1
+        self.assertFalse(CMV.cmv3(numpoints, points, area1))
+        
     def test_cmv4_positive(self):
         """Positive test for cmv4 method"""
         
