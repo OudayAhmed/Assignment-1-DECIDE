@@ -189,11 +189,7 @@ class CMV:
                         last_quad = quadrant[2]
         
         return False
-    numpoints = 7
-    points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.8, 0.9], [0.3, 0.2], [0.2, 0.3], [0.8, 0.9]]
-    q_pts = 8
-    quads = 2
-    print(cmv4(numpoints, points, q_pts, quads))
+
 
     @staticmethod
     def cmv5(NUMPOINTS, POINTS):
