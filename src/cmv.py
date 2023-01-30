@@ -2,9 +2,64 @@ import math
 
 import numpy as np
 
+""""Conditions Met Vector (CMV)"""
 
 class CMV:
+    """"Conditions Met Vector (CMV) class.
+
+    :ivar: input: The input file
+    :type: input: dict.
+    :ivar: NUMPOINTS: Number of data points.
+    :type: NUMPOINTS: int
+    :ivar: POINTS: 2Darray containing the coordinates of data points.
+    :type: POINTS: float
+    :ivar: LENGTH1: The length of a distance.
+    :type: LENGTH1: float
+    :ivar: RADIUS1: Radius of a circle.
+    :type: RADIUS1: float
+    :ivar: EPSILON: Deviation from PI.
+    :type: EPSILON: float
+    :ivar: AREA1: Area of a triangle.
+    :type: AREA1: float
+    :ivar: Q_PTS: The number of consecutive data points.
+    :type: Q_PTS: int
+    :ivar: QUADS: Number of quadrants.
+    :type: QUADS: int
+    :ivar: DIST: A distance.
+    :type: DIST: float
+    :ivar: N_PTS: Number of consecutive points.
+    :type: N_PTS: int
+    :ivar: K_PTS: Number of consecutive points.
+    :type: K_PTS: int
+    :ivar: A_PTS: Number of consecutive points.
+    :type: A_PTS: int
+    :ivar: B_PTS: Number of consecutive points.
+    :type: B_PTS: int
+    :ivar: C_PTS: Number of consecutive points.
+    :type: C_PTS: int
+    :ivar: D_PTS: Number of consecutive points.
+    :type: D_PTS: int
+    :ivar: E_PTS: Number of consecutive points.
+    :type: E_PTS: int
+    :ivar: F_PTS: Number of consecutive points.
+    :type: F_PTS: int
+    :ivar: G_PTS: Number of consecutive points.
+    :type: G_PTS: int
+    :ivar: LENGTH2: The length of a distance.
+    :type: LENGTH2: float
+    :ivar: RADIUS2: Radius of a circle.
+    :type: RADIUS2: float
+    :ivar: AREA2: Area of a triangle.
+    :type: AREA2: float
+    """
+
     def __init__(self, input):
+        """"Initializing the object.
+
+        :param input: The input file.
+        :type: input: dict.
+        """
+
         self.input = input
         self.NUMPOINTS = input['NUMPOINTS']
         self.POINTS = input['POINTS']
