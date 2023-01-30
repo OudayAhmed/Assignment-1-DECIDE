@@ -21,7 +21,7 @@ class FUV:
         2)all elements in PUM row i are true
 
         """
-
+        
         FUV = []
         for i in range(14):
             if not puv[i]:
