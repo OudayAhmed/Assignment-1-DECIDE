@@ -223,6 +223,8 @@ class CMV:
         :type K_PTS: int
         :param LENGTH1: Float length greater or equal to 0.
         :type LENGTH1: float
+        :returns: True if conditions are met, otherwise False.
+        :rtype: bool
         """
 
         if (not (1 <= K_PTS) and (not(K_PTS <= NUMPOINTS - 2))) or NUMPOINTS < 3:
