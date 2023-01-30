@@ -201,7 +201,6 @@ class CMV:
         :returns: True if 3 <= N_PTS <= NUMPOINTS and 0 <= DIST else False
         :rtype: bool
         """
-        #Take-2
         if NUMPOINTS < 3:
             return False
         if NUMPOINTS < N_PTS or DIST <= 0:
@@ -219,7 +218,7 @@ class CMV:
                     side_3 = math.sqrt((POINTS[i + N_PTS - 1][0] - POINTS[i + j][0]) ** 2 + (
                             POINTS[i + N_PTS - 1][1] - POINTS[i + j][1]) ** 2)
                     if side_1 == 0.0 or side_2 == 0.0 or side_3 == 0.0:
-                        return False     
+                        continue   
                     cos_angle = math.acos((side_1 ** 2 + side_2 ** 2 - side_3 ** 2) / (2 * side_1 * side_2))
                     comparison_distance = math.sin(cos_angle) * side_2
 
