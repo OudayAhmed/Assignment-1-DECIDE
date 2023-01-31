@@ -1,6 +1,6 @@
 import math
 
-import numpy as np
+#import numpy as np
 
 
 class CMV:
@@ -350,6 +350,32 @@ class CMV:
             i += 1
         return False
     
+    @staticmethod
+    def cmv11(NUMPOINTS, POINTS, G_PTS):
+        """Checking if there exists at least one set of two data points, (X[i],Y[i]) and (X[j],Y[j]), separated by exactly G PTS consecutive intervening points,
+         such that X[j] - X[i] < 0. (where i < j ) The condition is not met when NUMPOINTS < 3.
+         :param NUMPOINTS: The number of planar data points.
+         :type NUMPOINTS: int
+         :param POINTS: 2Darray containing containing coordinates of data points.
+         :type POINTS: 2Darray(float)
+         :param G_PTS: The number of int points
+         :type G_PTS: int
+         :returns: True if point_2_x - point_1_x < 0
+         :rtype: bool
+         """
+
+        if (NUMPOINTS<3):
+            return False
+        if (not(1 <= G_PTS <= NUMPOINTS-2)):
+            return False
+
+        for i in range( NUMPOINTS - G_PTS - 1):
+            point_1_x = POINTS[i][0]
+            point_2_x = POINTS[i + G_PTS + 1][0]
+            if (point_2_x - point_1_x < 0):
+                return True
+        return False
+
     @staticmethod    
     def cmv12(NUMPOINTS, POINTS, K_PTS, LENGTH1, LENGTH2):
         """Checking if there exists at least one set of two data points seperated by exactly K_PTS consecutive intervening points.
