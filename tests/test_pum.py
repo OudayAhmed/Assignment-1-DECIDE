@@ -7,7 +7,11 @@ from src.pum import PUM
 class TestCMV(TestCase):
 
     def test_calc_pum_positive(self):
-        """Positive test for calc_PUM method"""
+        """Positive test for calc_PUM method
+
+        Check whether the elements obtained by calc_PUM() are as expected,
+        which should be all true.
+        """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
         with open("input/test_calc_pum_positive.yml", 'r') as f:
@@ -31,7 +35,11 @@ class TestCMV(TestCase):
         self.assertEqual(PUM(input, cmv).calc_PUM(), pum_expected)
 
     def test_calc_pum_negative(self):
-        """Negative test for calc_PUM method"""
+        """Negative test for calc_PUM method
+
+        Check whether the elements obtained by calc_PUM() are as expected,
+        which should be all true except for pum[3][13] and pum[13][3].
+        """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
         with open("input/test_calc_pum_negative.yml", 'r') as f:
@@ -50,12 +58,15 @@ class TestCMV(TestCase):
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1],
+            [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1]]
         self.assertNotEqual(PUM(input, cmv).calc_PUM(), pum_expected)
 
     def test_calc_pum_lcm_asymmetric(self):
-        """Test case for calc_PUM method with LCM asymmetric"""
+        """Test case for calc_PUM method with LCM asymmetric
+
+        Check whether lcm inputted is assigned symmetrically.
+        """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
         with open("input/test_calc_pum_lcm_asymmetric.yml", 'r') as f:
