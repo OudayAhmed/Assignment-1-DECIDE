@@ -10,7 +10,7 @@ class TestFUV(TestCase):
     Contains all the test cases for all FUV conditions.
     """
 
-    def test_fuv_get_true_condition_1(self):
+    def test_fuv_positive_condition_1(self):
         """Positive test for condition 1 of fuv method
 
         Check whether the elements of FUV are true if condition 1 is satisfied and condition 2 is not satisfied.
@@ -23,7 +23,7 @@ class TestFUV(TestCase):
         fuv_answer = [True for _ in range(15)]
         self.assertEqual(FUV.fuv(puv, pum), fuv_answer)
 
-    def test_fuv_get_true_condition_2(self):
+    def test_fuv_positive_condition_2(self):
         """Positive test for condition 2 of fuv method
 
         Check whether the elements of FUV are true if condition 2 is satisfied and condition 1 is not satisfied.
@@ -36,7 +36,7 @@ class TestFUV(TestCase):
         fuv_answer = [True for _ in range(15)]
         self.assertEqual(FUV.fuv(puv, pum), fuv_answer)
 
-    def test_fuv_get_false(self):
+    def test_fuv_negative(self):
         """Negative test for fuv method
 
         Check whether the elements of FUV are false if both condition 1 and condition 2 are not satisfied.
