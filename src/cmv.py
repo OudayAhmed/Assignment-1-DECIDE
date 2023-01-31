@@ -375,7 +375,7 @@ class CMV:
             if (point_2_x - point_1_x < 0):
                 return True
         return False
-
+    
     @staticmethod    
     def cmv12(NUMPOINTS, POINTS, K_PTS, LENGTH1, LENGTH2):
         """Checking if there exists at least one set of two data points seperated by exactly K_PTS consecutive intervening points.
