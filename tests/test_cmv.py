@@ -356,6 +356,30 @@ class TestCMV(TestCase):
         area1 = 0.001
         self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
 
+    def test_cmv_11_positive(self):
+        """Positive test for cmv 11 method"""
+
+        numPoints = 3
+        points = [[6, 3], [5, 1], [4, 1]]
+        g_pts = 1
+        self.assertTrue(CMV.cmv11(numPoints, points, g_pts))
+
+    def test_cmv_11_negative(self):
+        """Negative test for cmv 11 method"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        g_pts = 1
+        self.assertFalse(CMV.cmv11(numPoints, points, g_pts))
+    
+    def test_cmv_11_small_g_pts(self):
+        """Negative test for cmv 11 method"""
+
+        numPoints = 4
+        points = [[1, 3], [1, 1], [3, 1], [5, 2]]
+        g_pts = 0
+        self.assertFalse(CMV.cmv11(numPoints, points, g_pts))
+        
     def test_cmv_12_positive(self):
         """Positive test case for cmv 12"""
         
