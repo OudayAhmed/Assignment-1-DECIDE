@@ -65,13 +65,26 @@ class TestCMV(TestCase):
         self.assertNotEqual(PUM(input, cmv).calc_PUM(), pum_expected)
 
     def test_calc_pum_lcm_asymmetric(self):
-        """Test case for calc_PUM method with LCM asymmetric
+        """Invalid test for pum method
 
-        Check whether lcm inputted is assigned symmetrically.
+        Check whether invalid (asymmetric) input (lcm) of fuv can be detected
         """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
         file_path = path.abspath(path.join(path.dirname(__file__), "input/test_calc_pum_lcm_asymmetric.yml"))
+        with open(file_path, 'r') as f:
+            input = yaml.safe_load(f)
+        with self.assertRaises(ValueError):
+            PUM(input, cmv).calc_PUM()
+
+    def test_calc_pum_invalid_cmv(self):
+        """Invalid test for pum method
+
+        Check whether invalid input (cmv) of pum can be detected
+        """
+
+        cmv = [True for _ in range(14)]
+        file_path = path.abspath(path.join(path.dirname(__file__), "input/input.yml"))
         with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         with self.assertRaises(ValueError):
