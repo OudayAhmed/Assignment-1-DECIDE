@@ -25,9 +25,30 @@ Run tests with the following command:
 
     python -m unittest discover
 
+Switching bewteen "YES" and "NO" output from the provided example inputs: 
 
+Change the input between positiveInput.yml and negativeInput.yml to toggle between "YES" and "NO" outputs.
 
-
+*"YES" output*
+```
+def main():
+    with open("tests/input/positiveInput.yml", 'r') as f:
+        input = yaml.safe_load(f)
+    if Decide(input).decide() is True:
+        print("YES")
+    else:
+        print("NO")
+```
+*"NO" output*
+```
+def main():
+    with open("tests/input/negativeInput.yml", 'r') as f:
+        input = yaml.safe_load(f)
+    if Decide(input).decide() is True:
+        print("YES")
+    else:
+        print("NO")
+```
 
 ## Contributions
 
