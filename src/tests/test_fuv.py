@@ -1,5 +1,6 @@
 from unittest import TestCase
-
+from os import path
+import yaml
 from main.fuv import FUV
 
 """TestFUV"""
@@ -94,3 +95,31 @@ class TestFUV(TestCase):
                ]
         fuv_answer = [False, True, False, True, False, False, True, True, True, True, False, False, False, True, True]
         self.assertEqual(FUV.fuv(puv, pum), fuv_answer)
+
+
+    def test_fuv_invalid_input(self):
+        """Invalid test for fuv method
+
+        Check whether invalid input (puv) of fuv can be detected
+        """
+
+        pum = [[True for _ in range(15)] for _ in range(15)]
+
+        file_path = path.abspath(path.join(path.dirname(__file__), "input/test_calc_fuv_invalid_input.yml"))
+        with open(file_path, 'r') as f:
+            input = yaml.safe_load(f)
+        with self.assertRaises(ValueError):
+            FUV(input, pum).calc_PUM()
+
+    def test_fuv_invalid_pum(self):
+        """Invalid test for fuv method
+
+        Check whether invalid input (pum) of fuv can be detected
+        """
+
+        pum = [[True for _ in range(14)] for _ in range(16)]
+        file_path = path.abspath(path.join(path.dirname(__file__), "input/input.yml"))
+        with open(file_path, 'r') as f:
+            input = yaml.safe_load(f)
+        with self.assertRaises(ValueError):
+            FUV(input, pum).calc_PUM()
