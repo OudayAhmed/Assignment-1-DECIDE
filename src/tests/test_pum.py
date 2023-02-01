@@ -2,7 +2,7 @@ from unittest import TestCase
 import yaml
 from os import path
 
-from src.main.pum import PUM
+from main.pum import PUM
 
 class TestCMV(TestCase):
 

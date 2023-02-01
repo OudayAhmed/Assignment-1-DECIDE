@@ -2,7 +2,7 @@ from unittest import TestCase
 from os import path
 import yaml
 
-from src.main.decide import Decide
+from main.decide import Decide
 
 
 class TestCMV(TestCase):
