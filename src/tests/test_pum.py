@@ -1,8 +1,8 @@
 from unittest import TestCase
 import yaml
+from os import path
 
-from src.pum import PUM
-
+from src.main.pum import PUM
 
 class TestCMV(TestCase):
 
@@ -14,7 +14,8 @@ class TestCMV(TestCase):
         """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
-        with open("input/test_calc_pum_positive.yml", 'r') as f:
+        file_path = path.abspath(path.join(path.dirname(__file__), "input/test_calc_pum_positive.yml"))
+        with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         pum_expected = [
             [-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -42,7 +43,8 @@ class TestCMV(TestCase):
         """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
-        with open("input/test_calc_pum_negative.yml", 'r') as f:
+        file_path = path.abspath(path.join(path.dirname(__file__), "input/test_calc_pum_negative.yml"))
+        with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         pum_expected = [
             [-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -69,7 +71,8 @@ class TestCMV(TestCase):
         """
 
         cmv = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
-        with open("input/test_calc_pum_lcm_asymmetric.yml", 'r') as f:
+        file_path = path.abspath(path.join(path.dirname(__file__), "input/test_calc_pum_lcm_asymmetric.yml"))
+        with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         with self.assertRaises(ValueError):
             PUM(input, cmv).calc_PUM()

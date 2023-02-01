@@ -1,5 +1,7 @@
 import yaml
-from src.decide import Decide
+
+from src.main.decide import Decide
+
 
 def main():
     with open("tests/input/input.yml", 'r') as f:

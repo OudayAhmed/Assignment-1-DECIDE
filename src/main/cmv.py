@@ -370,8 +370,9 @@ class CMV:
 
             s = (distance1+distance2+distance3)/2
             area = math.sqrt(s * (s - distance1) * (s - distance2) * (s - distance3))
+            if area == 0.0:
+                continue
             circradius = distance1 * distance2 * distance3 / (4 * area)
-
             if (circradius > RADIUS1):
                 return True
             i = i + 1
@@ -619,7 +620,11 @@ class CMV:
             self.cmv4(self.NUMPOINTS, self.POINTS, self.Q_PTS, self.QUADS),
             self.cmv5(self.NUMPOINTS, self.POINTS),
             self.cmv6(self.NUMPOINTS, self.POINTS, self.N_PTS, self.DIST),
+            self.cmv7(self.NUMPOINTS, self.POINTS, self.K_PTS, self.LENGTH1),
+            self.cmv8(self.NUMPOINTS, self.POINTS, self.A_PTS, self.B_PTS, self.RADIUS1),
             self.cmv9(self.NUMPOINTS, self.POINTS, self.C_PTS, self.D_PTS, self.EPSILON),
+            self.cmv10(self.NUMPOINTS, self.POINTS, self.E_PTS, self.F_PTS, self.AREA1),
+            self.cmv11(self.NUMPOINTS, self.POINTS, self.G_PTS),
             self.cmv12(self.NUMPOINTS, self.POINTS, self.K_PTS, self.LENGTH1, self.LENGTH2),
             self.cmv13(self.NUMPOINTS, self.POINTS, self.A_PTS, self.B_PTS, self.RADIUS1, self.RADIUS2),
             self.cmv14(self.NUMPOINTS, self.POINTS, self.E_PTS, self.F_PTS, self.AREA1, self.AREA2),
