@@ -1,6 +1,5 @@
-import unittest
 from unittest import TestCase
-from src.cmv import CMV
+from main.src.cmv import CMV
 
 """TestCMV"""
 

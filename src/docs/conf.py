@@ -9,7 +9,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 project = 'Assignment-1-DECIDE'
 copyright = '2023, Ouday Ahmed, Yiming Ju, Oscar Knowles, Elin Liu, Christofer Vikström'
