@@ -357,8 +357,8 @@ class TestCMV(TestCase):
         """Positive test for CMV8 method.
 
         Checks to see if there exists at least one set of three data points separated by exactly a_pts and b_pts.
-        The three points cannot be contained within or on a circle of radius1.
-        Should return True because the coditions are met.
+        The three points cannot be contained within on a circle of radius1.
+        Should return True because the conditions are met.
         """
 
         numpoints = 7
@@ -368,21 +368,20 @@ class TestCMV(TestCase):
         radius1 = 0.1
         self.assertTrue(CMV.cmv8(numpoints, points, a_pts, b_pts, radius1))
 
-    # def test_cmv_8_can_be_contained_in_radius1(self):
-    #     """Negative test for CMV8 method.
-    #
-    #     Checks to see if there exists at least one set of three data points separated by exactly a_pts and b_pts.
-    #     The three points cannot be contained within or on a circle of radius1.
-    #     Should return False because the coditions are not met and the points can not be contained.
-    #     """
-    #
-    #     numpoints = 7
-    #     points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.2], [0.2, 0.3], [0.3, 0.9]]
-    #     a_pts = 1
-    #     b_pts = 1
-    #     radius1 = 100
-    #     self.assertFalse(CMV.cmv8(numpoints, points, a_pts, b_pts, radius1))
-
+    def test_cmv_8_contained_in_radius1(self):
+        """Negative test for CMV8 method.
+        
+        Checks to see if there exists at least one set of three data points separated by exactly a_pts and b_pts.
+        The three points cannot be contained within on a circle of radius1. 
+        Should return False because the conditions are not met. 
+        """
+        numpoints = 5
+        points = [[0.1, 0.2], [0.8, 0.9], [0.3, 0.1], [0.5, 0.8], [0.3, 0.2]]
+        a_pts = 1
+        b_pts = 1
+        radius1 = 0.7
+        self.assertFalse(CMV.cmv8(numpoints, points, a_pts, b_pts, radius1))
+        
     def test_cmv_8_invalid_numpoints_less_than_5(self):
         """Negative test for CMV8 method.
 
@@ -518,7 +517,7 @@ class TestCMV(TestCase):
         area1 = 0.002
         self.assertFalse(CMV.cmv10(numpoints, points, e_pts, f_pts, area1))
 
-    def test_cmv_10_e_pts_and_f_pts_greater_than_numpoints_minus_three(self):
+    def test_cmv_10_e_pts_and_f_pts_too_great(self):
         """Test case for cmv 10 method with E_PTS + F_PTS > NUMPOINTS - 3.
 
         Checks to see if there exists at least one set of three data points separated by exactly e_pts and f_pts.
@@ -573,7 +572,7 @@ class TestCMV(TestCase):
         g_pts = 0
         self.assertFalse(CMV.cmv11(numPoints, points, g_pts))
 
-    def test_cmv_12_greater_than_length1_less_than_length2(self):
+    def test_cmv_12_dist_between_length1_and_length2(self):
         """Positive test case for cmv 12.
 
         Checks to see if there exists at least one set of two data points, separated by exactly k_pts consecutive intervening points.
@@ -715,7 +714,7 @@ class TestCMV(TestCase):
         radius2 = -2.5
         self.assertFalse(CMV.cmv13(numPoints, points, A_PTS, B_PTS, radius1, radius2))
 
-    def test_cmv_13_negative_NUMPOINTS(self):
+    def test_cmv_13_negative_numpoints(self):
         """Test case for cmv 13 method with negative NUMPOINTS.
         
         Checks to see if there exists at least one set of three data points, separated by exactly a_pts and b_pts.
@@ -800,7 +799,7 @@ class TestCMV(TestCase):
         area2 = -2.5
         self.assertFalse(CMV.cmv14(numPoints, points, E_PTS, F_PTS, area1, area2))
 
-    def test_cmv_14_negative_NUMPOINTS(self):
+    def test_cmv_14_negative_numpoints(self):
         """Test case for cmv 14 method with negative NUMPOINTS.
         
         Checks to see if there exists at least one set of three data points, separated by exactly e_pts and f_pts.
