@@ -1,6 +1,6 @@
 import yaml
 
-from main.src.decide import Decide
+from src.main.decide import Decide
 
 
 def main():

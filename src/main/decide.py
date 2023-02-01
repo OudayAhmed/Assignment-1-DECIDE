@@ -1,8 +1,8 @@
 """Decide"""
 
-from src.src.cmv import CMV
-from src.src import FUV
-from src.src import PUM
+from src.main.cmv import CMV
+from src.main.fuv import FUV
+from src.main.pum import PUM
 
 
 class Decide:

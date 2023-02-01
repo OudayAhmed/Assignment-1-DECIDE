@@ -1,5 +1,5 @@
 from unittest import TestCase
-from main.src import FUV
+from src.main import FUV
 
 """TestFUV"""
 
