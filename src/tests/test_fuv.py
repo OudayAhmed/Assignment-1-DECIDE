@@ -96,6 +96,7 @@ class TestFUV(TestCase):
         fuv_answer = [False, True, False, True, False, False, True, True, True, True, False, False, False, True, True]
         self.assertEqual(FUV.fuv(puv, pum), fuv_answer)
 
+
     def test_fuv_invalid_input(self):
         """Invalid test for fuv method
 
@@ -108,7 +109,7 @@ class TestFUV(TestCase):
         with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         with self.assertRaises(ValueError):
-            FUV(input, pum).calc_FUV()
+            FUV(input, pum).calc_PUM()
 
     def test_fuv_invalid_pum(self):
         """Invalid test for fuv method
@@ -121,4 +122,4 @@ class TestFUV(TestCase):
         with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         with self.assertRaises(ValueError):
-            FUV(input, pum).calc_FUV()
+            FUV(input, pum).calc_PUM()
