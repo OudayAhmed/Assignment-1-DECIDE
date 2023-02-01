@@ -370,8 +370,9 @@ class CMV:
 
             s = (distance1+distance2+distance3)/2
             area = math.sqrt(s * (s - distance1) * (s - distance2) * (s - distance3))
+            if area == 0.0:
+                continue
             circradius = distance1 * distance2 * distance3 / (4 * area)
-
             if (circradius > RADIUS1):
                 return True
             i = i + 1

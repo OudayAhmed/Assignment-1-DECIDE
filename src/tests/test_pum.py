@@ -1,7 +1,7 @@
 from unittest import TestCase
 import yaml
 
-from src.pum import PUM
+from src.main.pum import PUM
 
 
 class TestCMV(TestCase):
