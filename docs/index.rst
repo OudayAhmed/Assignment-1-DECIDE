@@ -1,5 +1,5 @@
 .. Assignment-1-DECIDE documentation master file, created by
-   sphinx-quickstart on Sat Jan 28 21:03:44 2023.
+   sphinx-quickstart on Wed Feb  1 15:48:43 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -11,7 +11,6 @@ Welcome to Assignment-1-DECIDE's documentation!
    :caption: Contents:
 
    modules
-
 
 Indices and tables
 ==================
