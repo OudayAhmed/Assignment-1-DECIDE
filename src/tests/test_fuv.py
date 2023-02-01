@@ -109,7 +109,7 @@ class TestFUV(TestCase):
         with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         with self.assertRaises(ValueError):
-            FUV(input, pum).calc_PUM()
+            FUV(input, pum).calc_FUV()
 
     def test_fuv_invalid_pum(self):
         """Invalid test for fuv method
@@ -122,4 +122,4 @@ class TestFUV(TestCase):
         with open(file_path, 'r') as f:
             input = yaml.safe_load(f)
         with self.assertRaises(ValueError):
-            FUV(input, pum).calc_PUM()
+            FUV(input, pum).calc_FUV()
