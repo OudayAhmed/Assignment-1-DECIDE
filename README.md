@@ -7,16 +7,23 @@ The program centers around the 'DECIDE()'-function that will output either "YES"
 
 
 # Installation
-The code runs in Python. 
+In order to run the code properly, a version of Python >= 3.8 is required (Recommended Python 3.11.1).
 
 
 
 ## Run code and tests
-Install the requirements with the following command:
+To run the program, navigate to the src folder and run this command in the terminal to install the requirements:
+     
+     pip install -r requirements.txt
+
 
 Run the code with the following command:
 
+    python main.py
+
 Run tests with the following command:
+
+    python -m unittest discover
 
 
 
