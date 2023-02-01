@@ -33,7 +33,8 @@ class FUV:
         :returns: The Final Unlocking Vector (FUV).
         :rtype: 1D array (15*1)
         """
-        
+
+
         FUV = []
         for i in range(15):
             if not puv[i]:
@@ -50,4 +51,8 @@ class FUV:
         return FUV
 
     def calc_FUV(self):
+        if len(self.puv) != 15:
+            raise ValueError("The length of PUV must be fifteen.")
+        if len(self.pum) != 15 or len(self.pum[0]) != 15:
+            raise ValueError("The number of rows and columns within PUM must be fifteen.")
         return self.fuv(self.puv, self.pum)
